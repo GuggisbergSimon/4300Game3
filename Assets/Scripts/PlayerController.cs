@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
+			//TODO add check if player is in state where he can interact (i.e. not in a menu nor while reading already a dialogue, idk)
 			closestToPlayer.GetComponent<Interactive>().Interact();
 		}
 	}
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Interactive"))
+		if (other.gameObject.CompareTag("Interactive") && !interactives.Contains(other.gameObject))
 		{
 			interactives.Add(other.gameObject);
 		}
@@ -86,6 +87,9 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		interactives.Remove(other.gameObject);
+		if (other.gameObject.CompareTag("Interactive") && interactives.Contains(other.gameObject))
+		{
+			interactives.Remove(other.gameObject);
+		}
 	}
 }

@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
-
+	private UIManager myUIManager;
+	public UIManager MyUiManager => myUIManager;
+	
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
+
+		myUIManager = GetComponent<UIManager>();
 	}
 
 	public void LoadLevel(string nameLevel)

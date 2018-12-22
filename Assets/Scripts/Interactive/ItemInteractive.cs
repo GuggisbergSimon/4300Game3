@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ItemInteractive : Interactive
 {
-	[SerializeField] private Text item;
-	
+	[SerializeField] private Text text;
+
 	public override void Interact()
 	{
+		
 		base.Interact();
-		//TODO actual print that on the UI screen
-		Debug.Log(item.text);
+		GameManager.Instance.MyUiManager.DisplayDialogue(text);
 	}
 }

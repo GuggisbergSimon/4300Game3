@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: testestest
   skippable: 0
-  timeBetweenLetters: 0
-  colorText: {r: 0, g: 0, b: 0, a: 0}
+  timeBetweenLetters: 1
+  colorText: {r: 1, g: 1, b: 1, a: 1}
