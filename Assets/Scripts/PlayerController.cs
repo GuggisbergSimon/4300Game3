@@ -48,19 +48,23 @@ public class PlayerController : MonoBehaviour
 		{
 			hasPressedJump = false;
 		}
-
-		if (Input.GetButtonDown("Fire1") && !isAirborne)
-		{
-			//TODO scan for interactible objects nearby, interact with them.
-		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		//TODO add condition for not wall jumping
+		//TODO add condition for no wall jumping
 		if (other.gameObject.CompareTag("Ground"))
 		{
 			isAirborne = false;
+		}
+	}
+
+	private void OnTriggerStay2D(Collider2D other)
+	{
+		if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
+		    other.gameObject.CompareTag("Interactive") && !isAirborne)
+		{
+			other.gameObject.GetComponent<Interactive>().Interact();
 		}
 	}
 }
