@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b6880bee74aaf64b9790b2333cb18c9, type: 3}
-  m_Name: text test
+  m_Name: text 2 test
   m_EditorClassIdentifier: 
-  text: testestest
+  text: Motherfucker
+  skippable: 0
+  timeBetweenLetters: 0
+  colorText: {r: 0, g: 0, b: 0, a: 0}

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,5 +16,19 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
+	}
+
+	public void LoadLevel(string nameLevel)
+	{
+		SceneManager.LoadScene(nameLevel);
+	}
+
+	public void Quit()
+	{
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
+		Application.Quit();
+#endif
 	}
 }

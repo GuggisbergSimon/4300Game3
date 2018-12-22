@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Text : ScriptableObject
 {
-	//TODO add more settings (color text, speed print, skippable, etc)
 	public string text;
+	public bool skippable = false;
+	public float timeBetweenLetters = 0.0f;
+	public Color colorText;
 }

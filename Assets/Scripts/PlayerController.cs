@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private bool hasPressedJump;
 	private bool isAirborne;
 	private Rigidbody2D myRigidbody2D;
+	private List<GameObject> interactives = new List<GameObject>();
 
 	private void Start()
 	{
@@ -48,6 +50,21 @@ public class PlayerController : MonoBehaviour
 		{
 			hasPressedJump = false;
 		}
+
+		if ((interactives.Count > 0 && Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) && !isAirborne)
+		{
+			GameObject closestToPlayer = interactives[0];
+			foreach (var item in interactives)
+			{
+				if ((closestToPlayer.transform.position - transform.position).magnitude >
+				    (item.transform.position - transform.position).magnitude)
+				{
+					closestToPlayer = item;
+				}
+			}
+
+			closestToPlayer.GetComponent<Interactive>().Interact();
+		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
@@ -59,13 +76,16 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	//TODO not interacting properly, latency, some inputs not received :-/
-	private void OnTriggerStay2D(Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
-		    other.gameObject.CompareTag("Interactive") && !isAirborne)
+		if (other.gameObject.CompareTag("Interactive"))
 		{
-			other.gameObject.GetComponent<Interactive>().Interact();
+			interactives.Add(other.gameObject);
 		}
+	}
+
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		interactives.Remove(other.gameObject);
 	}
 }
