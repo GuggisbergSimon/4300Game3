@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	//TODO not interacting properly, latency, some inputs not received :-/
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if ((Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
