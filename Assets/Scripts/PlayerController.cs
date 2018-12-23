@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] [Range(1, 10)] private float jumpSpeed = 5.0f;
 	[SerializeField] private float lowJumpMultiplier = 2.0f;
 	[SerializeField] [Range(1, 10)] private float speed = 5.0f;
+	[SerializeField] private GameObject groundDetector;
+	private TriggerDetector groundDetectorTrigger;
 	private bool hasPressedJump;
 	private bool isAirborne;
 	private bool canPlayerMove = true;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
+		groundDetectorTrigger = groundDetector.GetComponent<TriggerDetector>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
@@ -86,8 +89,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		//TODO add condition for no wall jumping
-		if (other.gameObject.CompareTag("Ground"))
+		if (groundDetectorTrigger.IsTriggered)
 		{
 			isAirborne = false;
 		}
