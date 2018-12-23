@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,9 +10,16 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] [Range(1, 10)] private float speed = 5.0f;
 	private bool hasPressedJump;
 	private bool isAirborne;
+	private bool canPlayerMove = true;
 	private Rigidbody2D myRigidbody2D;
 	private List<GameObject> interactives = new List<GameObject>();
 
+	public bool CanPlayerMove
+	{
+		get => canPlayerMove;
+		set => canPlayerMove = value;
+	}
+	
 	private void Start()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -19,52 +27,61 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (hasPressedJump)
+		if (canPlayerMove)
 		{
-			myRigidbody2D.velocity = Vector2.up * jumpSpeed;
-			hasPressedJump = false;
-		}
+			if (hasPressedJump)
+			{
+				myRigidbody2D.velocity = Vector2.up * jumpSpeed;
+				hasPressedJump = false;
+			}
 
-		//code from "better jumping with 4 lines of code"
-		if (myRigidbody2D.velocity.y < 0)
-		{
-			myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-		}
-		else if (myRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
-		{
-			myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-		}
+			//code from "better jumping with 4 lines of code"
+			if (myRigidbody2D.velocity.y < 0)
+			{
+				myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+			}
+			else if (myRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
+			{
+				myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+			}
 
-		var inputHorizontal = Input.GetAxis("Horizontal");
-		myRigidbody2D.velocity = Vector2.right * speed * inputHorizontal + myRigidbody2D.velocity * Vector2.up;
+			var inputHorizontal = Input.GetAxis("Horizontal");
+			myRigidbody2D.velocity = Vector2.right * speed * inputHorizontal + myRigidbody2D.velocity * Vector2.up;
+		}
 	}
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Jump") && !isAirborne)
+		if (canPlayerMove)
 		{
-			hasPressedJump = true;
-			isAirborne = true;
-		}
-		else if (Input.GetButtonUp("Jump"))
-		{
-			hasPressedJump = false;
-		}
-
-		if ((interactives.Count > 0 && Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) && !isAirborne)
-		{
-			GameObject closestToPlayer = interactives[0];
-			foreach (var item in interactives)
+			if (Input.GetButtonDown("Jump") && !isAirborne)
 			{
-				if ((closestToPlayer.transform.position - transform.position).magnitude >
-				    (item.transform.position - transform.position).magnitude)
-				{
-					closestToPlayer = item;
-				}
+				hasPressedJump = true;
+				isAirborne = true;
+			}
+			else if (Input.GetButtonUp("Jump"))
+			{
+				hasPressedJump = false;
 			}
 
-			//TODO add check if player is in state where he can interact (i.e. not in a menu nor while reading already a dialogue, idk)
-			closestToPlayer.GetComponent<Interactive>().Interact();
+			if ((interactives.Count > 0 && Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
+			    !isAirborne)
+			{
+				GameObject closestToPlayer = interactives[0];
+				foreach (var item in interactives)
+				{
+					if ((closestToPlayer.transform.position - transform.position).magnitude >
+					    (item.transform.position - transform.position).magnitude)
+					{
+						closestToPlayer = item;
+					}
+				}
+
+				//TODO add check if player is in state where he can interact (i.e. not in a menu nor while reading already a dialogue, idk)
+				closestToPlayer.GetComponent<Interactive>().Interact();
+				canPlayerMove = false;
+				myRigidbody2D.velocity = Vector2.zero;
+			}
 		}
 	}
 

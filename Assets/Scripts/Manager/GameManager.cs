@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	private UIManager myUIManager;
 	public UIManager MyUiManager => myUIManager;
+	private PlayerController player;
+	public PlayerController Player => player;
+	
 	
 	private void Awake()
 	{
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 		}
 
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 		myUIManager = GetComponent<UIManager>();
 	}
 

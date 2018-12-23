@@ -17,31 +17,26 @@ public class UIManager : MonoBehaviour
 		dialogueText.color = text.colorText;
 		isCurrentTextSkippable = text.skippable;
 		dialoguePanel.SetActive(true);
-		if (text.timeBetweenLetters.CompareTo(0) != 0)
-		{
-			currentTimeBetweenLetters = text.timeBetweenLetters;
-			StartCoroutine(DisplayLetterByLetter(text.text));
-		}
-		else
-		{
-			dialogueText.text = text.text;
-		}
+		//TODO actually display message instantly if time is 0 (did not work for closing dialogue)
+		currentTimeBetweenLetters = text.timeBetweenLetters;
+		StartCoroutine(DisplayLetterByLetter(text.text));
+
 	}
 
 	private void Update()
 	{
-		//TODO not working as intended
 		//checks for closing dialogue panel
-		/*if (dialoguePanel.activeSelf && !isPrinting && Input.GetButtonDown("Fire1"))
+		if (dialoguePanel.activeSelf && !isPrinting && Input.GetButtonDown("Fire1"))
 		{
 			dialoguePanel.SetActive(false);
-		}*/
+			GameManager.Instance.Player.CanPlayerMove = true;
+		}
 
 		//checks for skipping dialogue
-		/*if (isPrinting && Input.GetButtonDown("Fire1") && isCurrentTextSkippable)
+		if (isPrinting && Input.GetButtonDown("Fire1") && isCurrentTextSkippable)
 		{
 			currentTimeBetweenLetters = 0.0f;
-		}*/
+		}
 	}
 
 	private IEnumerator DisplayLetterByLetter(string text)

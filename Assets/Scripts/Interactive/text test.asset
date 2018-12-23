@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: text test
   m_EditorClassIdentifier: 
   text: testestest
-  skippable: 0
+  skippable: 1
   timeBetweenLetters: 1
   colorText: {r: 1, g: 1, b: 1, a: 1}
