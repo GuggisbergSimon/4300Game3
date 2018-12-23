@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 	public UIManager MyUiManager => myUIManager;
 	private PlayerController player;
 	public PlayerController Player => player;
-	
-	
+
+
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)

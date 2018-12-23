@@ -8,7 +8,6 @@ public class ItemInteractive : Interactive
 
 	public override void Interact()
 	{
-		
 		base.Interact();
 		GameManager.Instance.MyUiManager.DisplayDialogue(text);
 	}

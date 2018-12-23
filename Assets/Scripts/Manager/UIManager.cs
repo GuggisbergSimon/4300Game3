@@ -17,10 +17,10 @@ public class UIManager : MonoBehaviour
 		dialogueText.color = text.colorText;
 		isCurrentTextSkippable = text.skippable;
 		dialoguePanel.SetActive(true);
+
 		//TODO actually display message instantly if time is 0 (did not work for closing dialogue)
 		currentTimeBetweenLetters = text.timeBetweenLetters;
 		StartCoroutine(DisplayLetterByLetter(text.text));
-
 	}
 
 	private void Update()
@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
 			GameManager.Instance.Player.CanPlayerMove = true;
 		}
 
+		//TODO skip the text at the moment the button is pressed (not after a while)
 		//checks for skipping dialogue
 		if (isPrinting && Input.GetButtonDown("Fire1") && isCurrentTextSkippable)
 		{

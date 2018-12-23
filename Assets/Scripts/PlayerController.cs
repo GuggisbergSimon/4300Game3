@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 		get => canPlayerMove;
 		set => canPlayerMove = value;
 	}
-	
+
 	private void Start()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
