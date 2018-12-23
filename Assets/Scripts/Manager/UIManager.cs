@@ -8,45 +8,47 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject dialoguePanel;
 	[SerializeField] private TextMeshProUGUI dialogueText;
 	private bool isPrinting = false;
-	private bool isCurrentTextSkippable = true;
-	private float currentTimeBetweenLetters = 0.0f;
-
+	public bool IsPrinting => isPrinting;
+	private IEnumerator displayCoroutine;
+	
 	public void DisplayDialogue(Text text)
 	{
 		dialogueText.text = "";
 		dialogueText.color = text.colorText;
-		isCurrentTextSkippable = text.skippable;
 		dialoguePanel.SetActive(true);
 
-		//TODO actually display message instantly if time is 0 (did not work for closing dialogue)
-		currentTimeBetweenLetters = text.timeBetweenLetters;
-		StartCoroutine(DisplayLetterByLetter(text.text));
+		if (text.timeBetweenLetters.CompareTo(0) != 0)
+		{
+			displayCoroutine = DisplayLetterByLetter(text.text, text.timeBetweenLetters);
+			StartCoroutine(displayCoroutine);
+		}
+		else
+		{
+			DisplayAllText(text.text);
+		}
 	}
 
-	private void Update()
+	public void CloseDialogue()
 	{
-		//checks for closing dialogue panel
-		if (dialoguePanel.activeSelf && !isPrinting && Input.GetButtonDown("Fire1"))
-		{
-			dialoguePanel.SetActive(false);
-			GameManager.Instance.Player.CanPlayerMove = true;
-		}
-
-		//TODO skip the text at the moment the button is pressed (not after a while)
-		//checks for skipping dialogue
-		if (isPrinting && Input.GetButtonDown("Fire1") && isCurrentTextSkippable)
-		{
-			currentTimeBetweenLetters = 0.0f;
-		}
+		dialoguePanel.SetActive(false);
+	}
+	
+	public void DisplayAllText(string text)
+	{
+		
+		StopCoroutine(displayCoroutine);
+		dialogueText.text = "";
+		dialogueText.text = text;
+		isPrinting = false;
 	}
 
-	private IEnumerator DisplayLetterByLetter(string text)
+	private IEnumerator DisplayLetterByLetter(string text, float time)
 	{
 		isPrinting = true;
 		foreach (var character in text)
 		{
 			dialogueText.text += character;
-			yield return new WaitForSeconds(currentTimeBetweenLetters);
+			yield return new WaitForSeconds(time);
 		}
 
 		isPrinting = false;

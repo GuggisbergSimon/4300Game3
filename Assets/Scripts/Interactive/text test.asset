@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6880bee74aaf64b9790b2333cb18c9, type: 3}
   m_Name: text test
   m_EditorClassIdentifier: 
-  text: testestest
+  text: Somebody once told me the world is gonna roll over me, cuz I an't the sharpest
+    tool in the shed.
   skippable: 1
-  timeBetweenLetters: 1
+  timeBetweenLetters: 0.1
   colorText: {r: 1, g: 1, b: 1, a: 1}
