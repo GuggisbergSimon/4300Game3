@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
 					}
 				}
 
-				//TODO add check if player is in state where he can interact (i.e. not in a menu nor while reading already a dialogue, idk)
 				closestToPlayer.GetComponent<Interactive>().Interact();
 				canPlayerMove = false;
 				myRigidbody2D.velocity = Vector2.zero;

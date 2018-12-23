@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 		}
 		else
 		{
-			DisplayAllText(text.text);
+			dialogueText.text = text.text;
 		}
 	}
 
