@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6880bee74aaf64b9790b2333cb18c9, type: 3}
   m_Name: text 2 test
   m_EditorClassIdentifier: 
-  text: Motherfucker
+  text: What the fuck did you just fucking say about me, you little bitch? I'll have
+    you know I graduated top of my class in the Navy Seals, and I've been involved
+    in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills.
   skippable: 0
   timeBetweenLetters: 0
   colorText: {r: 1, g: 0.4764151, b: 0.4764151, a: 1}
