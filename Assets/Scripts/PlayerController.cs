@@ -16,6 +16,15 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D myRigidbody2D;
 	private List<GameObject> interactives = new List<GameObject>();
 
+
+
+    //dorian code
+    [SerializeField] private float distance;
+    [SerializeField] private float inputVertical;
+    public LayerMask Ladder;
+    private bool isClimbing;
+    //plus dorian code
+
 	public bool CanPlayerMove
 	{
 		get => canPlayerMove;
@@ -51,7 +60,39 @@ public class PlayerController : MonoBehaviour
 			var inputHorizontal = Input.GetAxis("Horizontal");
 			myRigidbody2D.velocity = Vector2.right * speed * inputHorizontal + myRigidbody2D.velocity * Vector2.up;
 		}
-	}
+
+
+        //dorian code 
+	    RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.up, distance, Ladder);
+
+	    if (hitInfo.collider != null)
+	    {
+	        if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown("w"))
+	        {
+	            isClimbing = true;
+	        }
+        }
+	    else
+	    {
+	        if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.RightArrow))
+	        {
+	            isClimbing = false;
+	        }
+	    }
+
+	    if (isClimbing == true && hitInfo.collider != null)
+	    {
+	        inputVertical = Input.GetAxisRaw("Vertical");
+            myRigidbody2D.velocity=new Vector2(myRigidbody2D.velocity.x,inputVertical*speed);
+	        myRigidbody2D.gravityScale = 0;
+
+        }
+        else
+        {
+            myRigidbody2D.gravityScale = 1;
+        }
+        //plus dorian code
+    }
 
 	private void Update()
 	{
