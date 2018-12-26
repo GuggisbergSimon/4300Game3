@@ -8,11 +8,22 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] [Range(1, 10)] private float jumpSpeed = 5.0f;
 	[SerializeField] private float lowJumpMultiplier = 2.0f;
 	[SerializeField] [Range(1, 10)] private float speed = 5.0f;
+	[SerializeField] private GameObject groundDetector;
+	private TriggerDetector groundDetectorTrigger;
 	private bool hasPressedJump;
 	private bool isAirborne;
 	private bool canPlayerMove = true;
 	private Rigidbody2D myRigidbody2D;
 	private List<GameObject> interactives = new List<GameObject>();
+
+
+
+    //dorian code
+    [SerializeField] private float distance;
+    [SerializeField] private float inputVertical;
+    public LayerMask Ladder;
+    private bool isClimbing;
+    //plus dorian code
 
 	public bool CanPlayerMove
 	{
@@ -22,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
+		groundDetectorTrigger = groundDetector.GetComponent<TriggerDetector>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
@@ -48,7 +60,39 @@ public class PlayerController : MonoBehaviour
 			var inputHorizontal = Input.GetAxis("Horizontal");
 			myRigidbody2D.velocity = Vector2.right * speed * inputHorizontal + myRigidbody2D.velocity * Vector2.up;
 		}
-	}
+
+
+        //dorian code 
+	    RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.up, distance, Ladder);
+
+	    if (hitInfo.collider != null)
+	    {
+	        if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown("w"))
+	        {
+	            isClimbing = true;
+	        }
+        }
+	    else
+	    {
+	        if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.RightArrow))
+	        {
+	            isClimbing = false;
+	        }
+	    }
+
+	    if (isClimbing == true && hitInfo.collider != null)
+	    {
+	        inputVertical = Input.GetAxisRaw("Vertical");
+            myRigidbody2D.velocity=new Vector2(myRigidbody2D.velocity.x,inputVertical*speed);
+	        myRigidbody2D.gravityScale = 0;
+
+        }
+        else
+        {
+            myRigidbody2D.gravityScale = 1;
+        }
+        //plus dorian code
+    }
 
 	private void Update()
 	{
@@ -77,7 +121,6 @@ public class PlayerController : MonoBehaviour
 					}
 				}
 
-				//TODO add check if player is in state where he can interact (i.e. not in a menu nor while reading already a dialogue, idk)
 				closestToPlayer.GetComponent<Interactive>().Interact();
 				canPlayerMove = false;
 				myRigidbody2D.velocity = Vector2.zero;
@@ -87,8 +130,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		//TODO add condition for no wall jumping
-		if (other.gameObject.CompareTag("Ground"))
+		if (groundDetectorTrigger.IsTriggered)
 		{
 			isAirborne = false;
 		}
