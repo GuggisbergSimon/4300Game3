@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Range(1, 10)] private float jumpSpeed = 5.0f;
 	[SerializeField, Range(1, 10)] private float speed = 5.0f;
 	[SerializeField, Range(1, 10)] private float climbingSpeed = 2.0f;
-	[SerializeField] private GameObject groundDetector;
+	[SerializeField] private GameObject groundDetector = null;
 	private TriggerDetector groundDetectorTrigger;
 	private bool hasPressedJump;
 	private bool isAirborne;

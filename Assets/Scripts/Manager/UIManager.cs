@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-	[SerializeField] private GameObject dialoguePanel;
-	[SerializeField] private TextMeshProUGUI dialogueText;
+	[SerializeField] private GameObject dialoguePanel=null;
+	[SerializeField] private TextMeshProUGUI dialogueText=null;
 	private bool isPrinting = false;
 	public bool IsPrinting => isPrinting;
 	private IEnumerator displayCoroutine;

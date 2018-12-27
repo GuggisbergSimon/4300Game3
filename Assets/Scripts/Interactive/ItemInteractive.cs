@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemInteractive : Interactive
 {
-	[SerializeField] private Text[] text;
+	[SerializeField] private Text[] text=null;
 	private bool isInteracting = false;
 	private int currentTextIndex;
 
