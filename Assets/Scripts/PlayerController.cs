@@ -5,30 +5,57 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private float fallMultiplier = 2.5f;
-	[SerializeField] [Range(1, 10)] private float jumpSpeed = 5.0f;
 	[SerializeField] private float lowJumpMultiplier = 2.0f;
-	[SerializeField] [Range(1, 10)] private float speed = 5.0f;
-	[SerializeField] private GameObject groundDetector;
+	[SerializeField, Range(1, 10)] private float jumpSpeed = 5.0f;
+	[SerializeField, Range(1, 10)] private float speed = 5.0f;
+	[SerializeField, Range(1, 10)] private float climbingSpeed = 2.0f;
+	[SerializeField] private GameObject groundDetector = null;
 	private TriggerDetector groundDetectorTrigger;
 	private bool hasPressedJump;
 	private bool isAirborne;
-	private bool canPlayerMove = true;
 	private Rigidbody2D myRigidbody2D;
 	private List<GameObject> interactives = new List<GameObject>();
+	private float horizontalInput;
+	private float verticalInput;
 
-
-
-    //dorian code
-    [SerializeField] private float distance;
-    [SerializeField] private float inputVertical;
-    public LayerMask Ladder;
-    private bool isClimbing;
-    //plus dorian code
-
-	public bool CanPlayerMove
+	public enum PlayerState
 	{
-		get => canPlayerMove;
-		set => canPlayerMove = value;
+		Idle,
+		Climbing,
+		Interacting,
+		Walking,
+		Jumping,
+		Falling
+	}
+
+	private PlayerState myState;
+
+	public PlayerState MyState
+	{
+		get => myState;
+		set
+		{
+			myState = value;
+			switch (myState)
+			{
+				case PlayerState.Climbing:
+				{
+					myRigidbody2D.gravityScale = 0.0f;
+					break;
+				}
+
+				case PlayerState.Interacting:
+				{
+					break;
+				}
+
+				default:
+				{
+					myRigidbody2D.gravityScale = 1.0f;
+					break;
+				}
+			}
+		}
 	}
 
 	private void Start()
@@ -39,91 +66,102 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (canPlayerMove)
+		switch (MyState)
 		{
-			if (hasPressedJump)
+			case PlayerState.Climbing:
 			{
-				myRigidbody2D.velocity = Vector2.up * jumpSpeed;
-				hasPressedJump = false;
+				myRigidbody2D.velocity = Vector2.up * verticalInput * climbingSpeed;
+				break;
+			}
+			
+			case PlayerState.Interacting:
+			{
+				break;
 			}
 
-			//code from "better jumping with 4 lines of code"
-			if (myRigidbody2D.velocity.y < 0)
+			default:
 			{
-				myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-			}
-			else if (myRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
-			{
-				myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-			}
+				//launch the initial jump
+				if (hasPressedJump)
+				{
+					myRigidbody2D.velocity = Vector2.up * jumpSpeed;
+					hasPressedJump = false;
+				}
 
-			var inputHorizontal = Input.GetAxis("Horizontal");
-			myRigidbody2D.velocity = Vector2.right * speed * inputHorizontal + myRigidbody2D.velocity * Vector2.up;
+				//code from "better jumping with 4 lines of code"
+				if (myRigidbody2D.velocity.y < 0)
+				{
+					myRigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+				}
+				else if (myRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
+				{
+					myRigidbody2D.velocity +=
+						Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+				}
+
+				myRigidbody2D.velocity = Vector2.right * speed * horizontalInput + myRigidbody2D.velocity * Vector2.up;
+				break;
+			}
 		}
-
-
-        //dorian code 
-	    RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.up, distance, Ladder);
-
-	    if (hitInfo.collider != null)
-	    {
-	        if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown("w"))
-	        {
-	            isClimbing = true;
-	        }
-        }
-	    else
-	    {
-	        if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.RightArrow))
-	        {
-	            isClimbing = false;
-	        }
-	    }
-
-	    if (isClimbing == true && hitInfo.collider != null)
-	    {
-	        inputVertical = Input.GetAxisRaw("Vertical");
-            myRigidbody2D.velocity=new Vector2(myRigidbody2D.velocity.x,inputVertical*speed);
-	        myRigidbody2D.gravityScale = 0;
-
-        }
-        else
-        {
-            myRigidbody2D.gravityScale = 1;
-        }
-        //plus dorian code
-    }
+	}
 
 	private void Update()
 	{
-		if (canPlayerMove)
+		switch (MyState)
 		{
-			if (Input.GetButtonDown("Jump") && !isAirborne)
+			case PlayerState.Climbing:
 			{
-				hasPressedJump = true;
-				isAirborne = true;
-			}
-			else if (Input.GetButtonUp("Jump"))
-			{
-				hasPressedJump = false;
-			}
-
-			if ((interactives.Count > 0 && Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
-			    !isAirborne)
-			{
-				GameObject closestToPlayer = interactives[0];
-				foreach (var item in interactives)
+				//updates horizontal and vertical input
+				horizontalInput = Input.GetAxis("Horizontal");
+				verticalInput = Input.GetAxis("Vertical");
+				if (horizontalInput.CompareTo(0) != 0)
 				{
-					if ((closestToPlayer.transform.position - transform.position).magnitude >
-					    (item.transform.position - transform.position).magnitude)
-					{
-						closestToPlayer = item;
-					}
+					myState = PlayerState.Idle;
 				}
 
-				closestToPlayer.GetComponent<Interactive>().Interact();
-				canPlayerMove = false;
-				myRigidbody2D.velocity = Vector2.zero;
+				break;
+			}
+
+			case PlayerState.Interacting:
+			{
+				break;
+			}
+
+			default:
+			{
+				//updates horizontal input
+				horizontalInput = Input.GetAxis("Horizontal");
+
+				//code for checking jump input
+				if (Input.GetButtonDown("Jump") && !isAirborne)
+				{
+					hasPressedJump = true;
+					isAirborne = true;
+				}
+				else if (Input.GetButtonUp("Jump"))
+				{
+					hasPressedJump = false;
+				}
+
+				//code for interacting with interactives
+				if ((interactives.Count > 0 && (Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
+				    !isAirborne))
+				{
+					GameObject closestToPlayer = interactives[0];
+					foreach (var item in interactives)
+					{
+						if ((closestToPlayer.transform.position - transform.position).magnitude >
+						    (item.transform.position - transform.position).magnitude)
+						{
+							closestToPlayer = item;
+						}
+					}
+
+					closestToPlayer.GetComponent<Interactive>().Interact();
+					myRigidbody2D.velocity = Vector2.zero;
+				}
+
+				break;
 			}
 		}
 	}
@@ -149,6 +187,7 @@ public class PlayerController : MonoBehaviour
 		if (other.gameObject.CompareTag("Interactive") && interactives.Contains(other.gameObject))
 		{
 			interactives.Remove(other.gameObject);
+			MyState = PlayerState.Idle;
 		}
 	}
 }

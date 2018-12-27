@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ItemInteractive : Interactive
 {
-	[SerializeField] private Text[] text;
+	[SerializeField] private Text[] text=null;
 	private bool isInteracting = false;
 	private int currentTextIndex;
-	
+
 	public override void Interact()
 	{
 		base.Interact();
+		GameManager.Instance.Player.MyState = PlayerController.PlayerState.Interacting;
 		currentTextIndex = 0;
 		GameManager.Instance.MyUiManager.DisplayDialogue(text[currentTextIndex]);
 		StartCoroutine(IsInteractingNextFrame());
@@ -21,7 +22,7 @@ public class ItemInteractive : Interactive
 		yield return new WaitForEndOfFrame();
 		isInteracting = true;
 	}
-	
+
 	private void Update()
 	{
 		//checks for closing dialogue panel
@@ -31,7 +32,7 @@ public class ItemInteractive : Interactive
 			if (currentTextIndex == text.Length - 1)
 			{
 				GameManager.Instance.MyUiManager.CloseDialogue();
-				GameManager.Instance.Player.CanPlayerMove = true;
+				GameManager.Instance.Player.MyState = PlayerController.PlayerState.Idle;
 			}
 			else
 			{
@@ -42,7 +43,8 @@ public class ItemInteractive : Interactive
 		}
 
 		//checks for skipping dialogue
-		if (isInteracting && Input.GetButtonDown("Fire1") && text[currentTextIndex].skippable && GameManager.Instance.MyUiManager.IsPrinting)
+		if (isInteracting && Input.GetButtonDown("Fire1") && text[currentTextIndex].skippable &&
+		    GameManager.Instance.MyUiManager.IsPrinting)
 		{
 			GameManager.Instance.MyUiManager.DisplayAllText(text[currentTextIndex].text);
 		}

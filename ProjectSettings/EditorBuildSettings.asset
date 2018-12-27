@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SimonScene.unity
+    guid: 0b864319514d3d4409c37142827a6791
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 6b482e2314c050941a55bae907a0d62f
   m_configObjects: {}
