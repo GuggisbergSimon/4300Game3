@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallMultiplier: 2.5
-  jumpSpeed: 6
   lowJumpMultiplier: 2
+  jumpSpeed: 6
   speed: 5
+  climbingSpeed: 2
   groundDetector: {fileID: 4996553108859099072}
 --- !u!50 &4112781890411731533
 Rigidbody2D:
@@ -188,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3293309043731007934}
   - component: {fileID: 1771942415645341048}
+  - component: {fileID: 7346288276667708030}
   - component: {fileID: 3079639334981507512}
   m_Layer: 0
   m_Name: Ground Detector
@@ -222,6 +224,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6360288b270d7404f9d65af207f99a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7346288276667708030
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996553108859099072}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &3079639334981507512
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,17 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+public class Door : Interactive
 {
     public string scene;
-    public void OnTriggerEnter2D(Collider2D doorCollider)
+
+    public override void Interact()
     {
-        if (doorCollider.gameObject.name == "Player")
-        {
-            SceneManager.LoadScene(scene);
-            Debug.Log("Scene loaded");
-        }
+        base.Interact();
+        GameManager.Instance.LoadLevel(scene);
     }
 }
