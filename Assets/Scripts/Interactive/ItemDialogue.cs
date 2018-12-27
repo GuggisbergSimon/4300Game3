@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInteractive : Interactive
+public class ItemDialogue : Interactive
 {
 	[SerializeField] private Text[] text=null;
 	private bool isInteracting = false;
@@ -14,10 +14,10 @@ public class ItemInteractive : Interactive
 		GameManager.Instance.Player.MyState = PlayerController.PlayerState.Interacting;
 		currentTextIndex = 0;
 		GameManager.Instance.MyUiManager.DisplayDialogue(text[currentTextIndex]);
-		StartCoroutine(IsInteractingNextFrame());
+		StartCoroutine(InteractingNextFrame());
 	}
 
-	private IEnumerator IsInteractingNextFrame()
+	private IEnumerator InteractingNextFrame()
 	{
 		yield return new WaitForEndOfFrame();
 		isInteracting = true;
@@ -38,7 +38,7 @@ public class ItemInteractive : Interactive
 			{
 				currentTextIndex++;
 				GameManager.Instance.MyUiManager.DisplayDialogue(text[currentTextIndex]);
-				StartCoroutine(IsInteractingNextFrame());
+				StartCoroutine(InteractingNextFrame());
 			}
 		}
 
