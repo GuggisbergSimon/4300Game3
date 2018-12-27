@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc1eba39d37b7844a6b2d258d6ce044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  fallMultiplier: 4
+  lowJumpMultiplier: 4
   jumpSpeed: 6
   speed: 5
-  climbingSpeed: 2
+  climbingSpeed: 3
   groundDetector: {fileID: 4996553108859099072}
 --- !u!50 &4112781890411731533
 Rigidbody2D:
