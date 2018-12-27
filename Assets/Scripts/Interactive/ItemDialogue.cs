@@ -17,10 +17,17 @@ public class ItemDialogue : Interactive
 		StartCoroutine(InteractingNextFrame());
 	}
 
+	//TODO replace those two next for next frame methods by something more elegant
 	private IEnumerator InteractingNextFrame()
 	{
 		yield return new WaitForEndOfFrame();
 		isInteracting = true;
+	}
+
+	private IEnumerator IdleNextFrame()
+	{
+		yield return new WaitForEndOfFrame();
+		GameManager.Instance.Player.MyState = PlayerController.PlayerState.Idle;
 	}
 
 	private void Update()
@@ -32,7 +39,7 @@ public class ItemDialogue : Interactive
 			if (currentTextIndex == text.Length - 1)
 			{
 				GameManager.Instance.MyUiManager.CloseDialogue();
-				GameManager.Instance.Player.MyState = PlayerController.PlayerState.Idle;
+				StartCoroutine(IdleNextFrame());
 			}
 			else
 			{
