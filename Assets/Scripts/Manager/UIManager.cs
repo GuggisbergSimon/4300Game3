@@ -2,53 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
 {
-	[SerializeField] private GameObject dialoguePanel;
-	[SerializeField] private TextMeshProUGUI dialogueText;
-	private bool isPrinting = false;
-	private bool isCurrentTextSkippable = true;
-	private float currentTimeBetweenLetters = 0.0f;
+	[SerializeField] private DialogueRunner dialogueRunner;
+	public DialogueRunner DialogueRunner => dialogueRunner;
 
-	public void DisplayDialogue(Text text)
+	private void Awake()
 	{
-		dialogueText.text = "";
-		dialogueText.color = text.colorText;
-		isCurrentTextSkippable = text.skippable;
-		dialoguePanel.SetActive(true);
-
-		//TODO actually display message instantly if time is 0 (did not work for closing dialogue)
-		currentTimeBetweenLetters = text.timeBetweenLetters;
-		StartCoroutine(DisplayLetterByLetter(text.text));
-	}
-
-	private void Update()
-	{
-		//checks for closing dialogue panel
-		if (dialoguePanel.activeSelf && !isPrinting && Input.GetButtonDown("Fire1"))
-		{
-			dialoguePanel.SetActive(false);
-			GameManager.Instance.Player.CanPlayerMove = true;
-		}
-
-		//TODO skip the text at the moment the button is pressed (not after a while)
-		//checks for skipping dialogue
-		if (isPrinting && Input.GetButtonDown("Fire1") && isCurrentTextSkippable)
-		{
-			currentTimeBetweenLetters = 0.0f;
-		}
-	}
-
-	private IEnumerator DisplayLetterByLetter(string text)
-	{
-		isPrinting = true;
-		foreach (var character in text)
-		{
-			dialogueText.text += character;
-			yield return new WaitForSeconds(currentTimeBetweenLetters);
-		}
-
-		isPrinting = false;
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
 	}
 }
