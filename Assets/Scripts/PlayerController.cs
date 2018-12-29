@@ -107,6 +107,12 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
+		if (GameManager.Instance.MyUiManager.DialogueRunner.isDialogueRunning == true)
+		{
+			myRigidbody2D.velocity = Vector2.zero;
+			return;
+		}
+		
 		switch (MyState)
 		{
 			case PlayerState.Climbing:
