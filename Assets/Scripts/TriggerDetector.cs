@@ -15,7 +15,6 @@ public class TriggerDetector : MonoBehaviour
 		{
 			others.Add(other.gameObject);
 			isTriggered = true;
-			Debug.Log(others.Count);
 		}
 	}
 
@@ -28,7 +27,6 @@ public class TriggerDetector : MonoBehaviour
 			{
 				isTriggered = false;
 			}
-			Debug.Log(others.Count);
 		}
 	}
 }
