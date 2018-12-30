@@ -73,7 +73,9 @@ namespace Yarn.Unity.Example
 		/// dialogue is active and to restore them when dialogue ends
 		[SerializeField] private RectTransform gameControlsContainer = null;
 
+		[SerializeField] private AudioClip beepTalkingClip = null;
 		private bool isSkipping=false;
+		private AudioSource myAudioSource;
 		
 		private void Awake()
 		{
@@ -94,6 +96,8 @@ namespace Yarn.Unity.Example
 			// Hide the continue prompt if it exists
 			if (continuePrompt != null)
 				continuePrompt.SetActive(false);
+
+			myAudioSource = GetComponent<AudioSource>();
 		}
 
 		/// Show a line of dialogue, gradually
@@ -107,10 +111,12 @@ namespace Yarn.Unity.Example
 				// Display the line one character at a time
 				var stringBuilder = new StringBuilder();
 
+				myAudioSource.clip = beepTalkingClip;
 				foreach (char c in line.text)
 				{
 					stringBuilder.Append(c);
 					lineText.text = stringBuilder.ToString();
+					myAudioSource.Play();
 					if (isSkipping)
 					{
 						lineText.text = line.text;
