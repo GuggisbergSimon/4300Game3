@@ -19,13 +19,13 @@ public class Water : MonoBehaviour
 	private const float SPREAD = 0.05f;
 	private const float Z = -1.0f;
 	private float baseHeight;
-	[SerializeField] float left;
-	[SerializeField] private float width;
-	[SerializeField] private float top;
-	[SerializeField] private float bottom;
-	[SerializeField] private GameObject splash;
-	[SerializeField] private Material mat;
-	[SerializeField] private GameObject waterMesh;
+	[SerializeField] private float left = 0.0f;
+	[SerializeField] private float width = 0.0f;
+	[SerializeField] private float top = 0.0f;
+	[SerializeField] private float bottom = 0.0f;
+	[SerializeField] private GameObject splash = null;
+	[SerializeField] private Material mat = null;
+	[SerializeField] private GameObject waterMesh = null;
 
 	public void SpawnWater(float left, float width, float top, float bottom)
 	{

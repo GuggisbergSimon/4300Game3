@@ -343,7 +343,6 @@ MonoBehaviour:
   dialogueUI: {fileID: 632133427}
   startNode: 
   startAutomatically: 0
-  automaticCommands: 1
 --- !u!4 &632133426
 Transform:
   m_ObjectHideFlags: 0
@@ -569,7 +568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a7f9f2ed3ef754e849e1a31b9c0466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: start test
   talkToNode: Start
 --- !u!4 &816492403
 Transform:
@@ -1254,11 +1252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5969774045993862981, guid: e851b631b8a722446942b5536bae8066,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 11431408, guid: e851b631b8a722446942b5536bae8066, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1576,18 +1569,6 @@ PrefabInstance:
     - target: {fileID: 308901023, guid: e851b631b8a722446942b5536bae8066, type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 87625341, guid: e851b631b8a722446942b5536bae8066, type: 3}
-      propertyPath: m_Spacing
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 87625341, guid: e851b631b8a722446942b5536bae8066, type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 87625341, guid: e851b631b8a722446942b5536bae8066, type: 3}
-      propertyPath: m_Padding.m_Right
-      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e851b631b8a722446942b5536bae8066, type: 3}

@@ -29,6 +29,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Text;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 
 namespace Yarn.Unity.Example
@@ -46,15 +47,15 @@ namespace Yarn.Unity.Example
 		/** This object will be enabled when conversation starts, and 
 		 * disabled when it ends.
 		 */
-		[SerializeField] private GameObject dialogueContainer;
+		[SerializeField] private GameObject dialogueContainer = null;
 
-		[SerializeField] private GameObject buttonsContainer;
+		[SerializeField] private GameObject buttonsContainer = null;
 
 		/// The UI element that displays lines
-		[SerializeField] private TextMeshProUGUI lineText;
+		[SerializeField] private TextMeshProUGUI lineText = null;
 
 		/// A UI element that appears after lines have finished appearing
-		[SerializeField] private GameObject continuePrompt;
+		[SerializeField] private GameObject continuePrompt = null;
 
 		/// A delegate (ie a function-stored-in-a-variable) that
 		/// we call to tell the dialogue system about what option
@@ -66,12 +67,14 @@ namespace Yarn.Unity.Example
 		private float textSpeed = 0.025f;
 
 		/// The buttons that let the user choose an option
-		[SerializeField] private List<Button> optionButtons;
+		[CanBeNull] [SerializeField] private List<Button> optionButtons = null;
 
 		/// Make it possible to temporarily disable the controls when
 		/// dialogue is active and to restore them when dialogue ends
-		[SerializeField] private RectTransform gameControlsContainer;
+		[SerializeField] private RectTransform gameControlsContainer = null;
 
+		private bool isSkipping=false;
+		
 		private void Awake()
 		{
 			// Start by hiding the container, line and option buttons
@@ -108,6 +111,12 @@ namespace Yarn.Unity.Example
 				{
 					stringBuilder.Append(c);
 					lineText.text = stringBuilder.ToString();
+					if (isSkipping)
+					{
+						lineText.text = line.text;
+						yield return null;
+						break;
+					}
 					yield return new WaitForSeconds(textSpeed);
 				}
 			}
@@ -122,14 +131,15 @@ namespace Yarn.Unity.Example
 				continuePrompt.SetActive(true);
 
 			// Wait for any user input
-			while (Input.anyKeyDown == false)
+			while (!Input.GetButtonDown("Jump"))
 			{
 				yield return null;
 			}
 
 			// Hide the text and prompt
 			lineText.gameObject.SetActive(false);
-
+			isSkipping = false;
+			
 			if (continuePrompt != null)
 				continuePrompt.SetActive(false);
 		}
@@ -199,8 +209,6 @@ namespace Yarn.Unity.Example
 		/// Called when the dialogue system has started running.
 		public override IEnumerator DialogueStarted()
 		{
-			Debug.Log("Dialogue starting!");
-
 			// Enable the dialogue controls.
 			if (dialogueContainer != null)
 				dialogueContainer.SetActive(true);
@@ -217,8 +225,6 @@ namespace Yarn.Unity.Example
 		/// Called when the dialogue system has finished running.
 		public override IEnumerator DialogueComplete()
 		{
-			Debug.Log("Complete!");
-
 			// Hide the dialogue interface.
 			if (dialogueContainer != null)
 				dialogueContainer.SetActive(false);
@@ -230,6 +236,14 @@ namespace Yarn.Unity.Example
 			}
 
 			yield break;
+		}
+
+		private void Update()
+		{
+			if (GameManager.Instance.MyUiManager.DialogueRunner.isDialogueRunning && Input.GetButtonDown("Jump"))
+			{
+				isSkipping = true;
+			}
 		}
 	}
 }
