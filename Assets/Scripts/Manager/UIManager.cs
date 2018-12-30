@@ -9,8 +9,13 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private DialogueRunner dialogueRunner;
 	public DialogueRunner DialogueRunner => dialogueRunner;
 
-	private void Awake()
+	public void Setup()
 	{
 		dialogueRunner = FindObjectOfType<DialogueRunner>();
+	}
+	
+	private void Awake()
+	{
+		Setup();
 	}
 }

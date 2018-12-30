@@ -162,9 +162,11 @@ public class PlayerController : MonoBehaviour
 							closestToPlayer = item;
 						}
 					}
-
-					closestToPlayer.GetComponent<Interactive>().Interact();
+					
+					horizontalInput = 0;
+					hasPressedJump = false;
 					myRigidbody2D.velocity = Vector2.zero;
+					closestToPlayer.GetComponent<Interactive>().Interact();
 				}
 
 				break;
