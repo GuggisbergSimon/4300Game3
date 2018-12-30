@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 632133428}
   - component: {fileID: 632133429}
   m_Layer: 0
-  m_Name: Dialogue Runner
+  m_Name: DialogueRunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,21 +564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3122150847555947728, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
-        type: 3}
-      propertyPath: dialoguePanel
-      value: 
-      objectReference: {fileID: 4810433050764554652}
-    - target: {fileID: 3122150847555947728, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 2925183555351886507}
-    - target: {fileID: 3122150847555947728, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
-        type: 3}
-      propertyPath: dialogueRunner
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248fc1d56fb0e5c46b909e856a63dc8a, type: 3}

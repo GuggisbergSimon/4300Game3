@@ -24,6 +24,7 @@ SOFTWARE.
 
 */
 
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -250,6 +251,13 @@ namespace Yarn.Unity.Example
 			{
 				isSkipping = true;
 			}
+		}
+
+		[YarnCommand("ChangePitch")]
+		public void ChangePitch(string pitch)
+		{
+			Debug.Log("testtest");
+			myAudioSource.pitch = (float) Convert.ToDouble(pitch);
 		}
 	}
 }
