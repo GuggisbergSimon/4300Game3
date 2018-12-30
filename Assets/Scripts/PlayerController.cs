@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 				myRigidbody2D.velocity = Vector2.up * verticalInput * climbingSpeed;
 				break;
 			}
-			
+
 			case PlayerState.Interacting:
 			{
 				break;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 			myRigidbody2D.velocity = Vector2.zero;
 			return;
 		}
-		
+
 		switch (MyState)
 		{
 			case PlayerState.Climbing:
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
 				//code for interacting with interactives
 				if ((interactives.Count > 0 && (Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
-				    !isAirborne))
+				     !isAirborne))
 				{
 					GameObject closestToPlayer = interactives[0];
 					foreach (var item in interactives)

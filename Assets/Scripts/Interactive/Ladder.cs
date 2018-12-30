@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ladder : Interactive
 {
-
 	public override void Interact()
 	{
 		base.Interact();
