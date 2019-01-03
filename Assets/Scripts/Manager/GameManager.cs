@@ -4,12 +4,33 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
-	private UIManager myUIManager;
-	public UIManager MyUiManager => myUIManager;
+	private UIManager myUiManager;
+	public UIManager MyUiManager => myUiManager;
 	private PlayerController player;
 	public PlayerController Player => player;
 
+	private void OnEnable()
+	{
+		SceneManager.sceneLoaded += OnLevelFinishedLoadingScene;
+	}
 
+	private void OnDisable()
+	{
+		SceneManager.sceneLoaded -= OnLevelFinishedLoadingScene;
+	}
+
+	private void OnLevelFinishedLoadingScene(Scene scene, LoadSceneMode mode)
+	{
+		Setup();
+	}
+
+	private void Setup()
+	{
+		player = FindObjectOfType<PlayerController>();
+		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		myUiManager.Setup();
+	}
+	
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)
@@ -22,8 +43,8 @@ public class GameManager : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 		}
 
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-		myUIManager = GetComponent<UIManager>();
+		myUiManager = GetComponent<UIManager>();
+		Setup();
 	}
 
 	public void LoadLevel(string nameLevel)

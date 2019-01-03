@@ -56,5 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fb4403ea9cb0e4797ac8cd918c21f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
+  dialogueRunner: {fileID: 0}
