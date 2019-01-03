@@ -2,10 +2,10 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hello there.\nLooking great\nwanna hear a story ?\n-> Yes.\n    Changed my mind. \n    Get lost loser !\n-> No.\n    Once upon a time there were three people living happily ever after.\n    And nothing changed.\n    Great isn't it ?\n    -> Yes.\n        I knew it.\n    -> No.\n        Get lost loser !",
+		"body": "<<if visited(\"Start\") is false>>\n    Hello there.\n    Looking great\n<<endif>>\n<<if $HeardAStory is false>>\n    wanna hear a story ?\n    -> Yes.\n        <<set $HeardAStory to true>>\n        Changed my mind.\n    -> No.\n        Once upon a time there were three people living happily ever after.\n        And nothing changed.\n        Great isn't it ?\n        -> Yes.\n            I knew it.\n            <<stop>>\n        -> No.\n<<endif>>\nGet lost loser !",
 		"position": {
-			"x": 566,
-			"y": 39
+			"x": 548,
+			"y": -40
 		},
 		"colorID": 0
 	},

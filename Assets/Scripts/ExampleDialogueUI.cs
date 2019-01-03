@@ -32,6 +32,7 @@ using System.Text;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace Yarn.Unity.Example
 {
@@ -75,6 +76,7 @@ namespace Yarn.Unity.Example
 		[SerializeField] private RectTransform gameControlsContainer = null;
 
 		[SerializeField] private AudioClip beepTalkingClip = null;
+		private EventSystem eventSystem;
 		private bool isSkipping=false;
 		private AudioSource myAudioSource;
 		
@@ -99,6 +101,12 @@ namespace Yarn.Unity.Example
 				continuePrompt.SetActive(false);
 
 			myAudioSource = GetComponent<AudioSource>();
+			
+		}
+
+		private void OnEnable()
+		{
+			eventSystem = EventSystem.current;
 		}
 
 		/// Show a line of dialogue, gradually
@@ -164,7 +172,6 @@ namespace Yarn.Unity.Example
 
 			lineText.gameObject.SetActive(true);
 			buttonsContainer.SetActive(true);
-			
 			// Display each option in a button, and make it visible
 			int i = 0;
 			foreach (var optionString in optionsCollection.options)
@@ -173,6 +180,9 @@ namespace Yarn.Unity.Example
 				optionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = optionString;
 				i++;
 			}
+
+			eventSystem.SetSelectedGameObject(optionButtons[3].gameObject);
+			eventSystem.SetSelectedGameObject(optionButtons[0].gameObject);
 
 			// Record that we're using it
 			SetSelectedOption = optionChooser;
@@ -256,7 +266,6 @@ namespace Yarn.Unity.Example
 		[YarnCommand("ChangePitch")]
 		public void ChangePitch(string pitch)
 		{
-			Debug.Log("testtest");
 			myAudioSource.pitch = (float) Convert.ToDouble(pitch);
 		}
 	}
