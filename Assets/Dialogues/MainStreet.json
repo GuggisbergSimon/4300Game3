@@ -1,0 +1,32 @@
+[
+	{
+		"title": "MSTownsfolkGuide",
+		"tags": "",
+		"body": "Nikola : Bonjour.\nCitadin : Bonjour, je peux vous aider ?\n\n<<if $MSHowToConvinceGuard is true>>\n->Non\n->Savez-vous comment convaincre le garde de la prison ?\n    Citadin : Jan ? Je ne le pense pas capable de résister à un trdelník.\n    ->Merci pour l'information.\n        Citadin : Il n'y a pas de quoi.\n    ->Trd... quoi ?\n        Citadin : Trdelník, c'est une variété de gâteau à la broche. Vous devriez en trouvez à la boulangerie au coin de la rue.\n        Nikola : Merci et une bonne journée.\n<<else>>\n->Non\n->Où se trouve la prison ?\n    Citadin : Vous ne pouvez pas la louper, continuez tout droit, traversez le pont et vous y êtes.\n    Nikola : Merci et une bonne journée.\n<<endif>>",
+		"position": {
+			"x": -782,
+			"y": -227
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard",
+		"tags": "",
+		"body": "<<if $MSShowHowToConvinceGuard is false>>\n    Garde : Halte, quel est la raison de votre passage à la prison ?\n    ->*Faire demi tour*\n        Garde : Bonne journée ?\n        <<stop>>\n    ->Je souhaite voir mon ami, Dalibor.\n        Garde : Le problème est que rien ne m'oblige de vous laissez passer, à moins de disposer d'arguments convaincants.\n        <<set $MSHowToConvinceGuard to true>>\n        ->*Faire demi-tour*\n            Garde : Bon vent !\n        ->*Montrer la lettre de Dalibor*\n            Garde : Il semblerait que vous soyez bien l'ami de ce Dalibor. Et ça change quoi ? Restez pas dans mes pattes.\n<<else>>\n    Garde : Alors, vous avez réfléchi à un argument convaincant ?\n    <<if $MSBoughtATrdelnik is false>>\n        ->*Faire demi-tour*\n            Garde : Bon vent !\n        ->*Montrer la lettre de Dalibor*\n            Garde : Il semblerait que vous soyez bien l'ami de ce Dalibor. Et ça change quoi ? Restez pas dans mes pattes.\n    <<else>>\n        ->*Faire demi-tour*\n            Garde : Bon vent !\n        ->*Montrer la lettre de Dalibor*\n            Garde : Il semblerait que vous soyez bien l'ami de ce Dalibor. Et ça change quoi ? Restez pas dans mes pattes.\n        ->*Offrir un trdelnik*\n            Garde : Oh.\n            Garde : Si vous me prenez par les sentiments...\n            <<set MSPrisonOpen to true>>\n<<endif>>",
+		"position": {
+			"x": -461,
+			"y": -230
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSBaker",
+		"tags": "",
+		"body": "Un boulanger vend plusieurs types de pâtisserie.\n->Ne rien acheter\n->Acheter un Strudl\n->Acheter un Medovnik\n->[Autres]\n    ->Ne rien acheter\n    ->Acheter un Trdelnik\n        <<set $MSBoughtATrdelnik to true>>\n    ->Acheter un Marlenka",
+		"position": {
+			"x": -183,
+			"y": -237
+		},
+		"colorID": 0
+	}
+]
