@@ -809,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 6982576844632514144, guid: 20e6cd54a6acef04386e81ab712a5f32,
         type: 3}
       propertyPath: talkToNode
-      value: MSTownsfolkGuide
+      value: MSBaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e6cd54a6acef04386e81ab712a5f32, type: 3}
