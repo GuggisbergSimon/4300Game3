@@ -165,6 +165,7 @@ public class Water : MonoBehaviour
 			                             (xpos / (xPositions[xPositions.Length - 1] - xPositions[0])));
 			velocities[index] = velocity;
 			float lifetime = 0.93f + Math.Abs(velocity) * 0.07f;
+			/*
 			var myMain = splash.GetComponent<ParticleSystem>().main;
 			myMain.startSpeed = 8 + 2 * Mathf.Pow(Mathf.Abs(velocity), 0.5f);
 			myMain.startSpeed = 9 + 2 * Mathf.Pow(Mathf.Abs(velocity), 0.5f);
@@ -174,6 +175,7 @@ public class Water : MonoBehaviour
 				new Vector3(xPositions[Mathf.FloorToInt(xPositions.Length / 2)], baseHeight + 8, 5) - position);
 			GameObject splish = Instantiate(splash, position, rotation) as GameObject;
 			Destroy(splish, lifetime + 0.3f);
+			*/
 		}
 	}
 }
