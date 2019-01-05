@@ -1,0 +1,122 @@
+[
+	{
+		"title": "RHNote1",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n4 février 1874\nMalgré un état maladif constant depuis le début de l'hiver j'ai décidé de finaliser ce projet. Les pogroms se font souvent par vague et je pressens l'une d'entre elles se profiler.\nCela se lit dans les yeux des gens. Je ne peux laisser mes semblables sans défense.",
+		"position": {
+			"x": -487,
+			"y": -75
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor",
+		"tags": "",
+		"body": "Il s'agit de la porte principale de la maison\n[[*Faire demi-tour*|RHDoor.Cancel]]\n<<if $RHRabbiDoorUnlocked is false>>\n[[*Enlever le verrou*|RHDoor.Unlock]]\n<<else>>\n[[*Remettre le verrou*|RHDoor.Lock]]\n<<endif>>\n[[*Ouvrir la porte*|RHDoor.Open]]\n",
+		"position": {
+			"x": 368,
+			"y": 354
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHBackDoor",
+		"tags": "",
+		"body": "Il s'agit de la porte arrière.\n->*Faire demi-tour*\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner MainStreet>>",
+		"position": {
+			"x": 83,
+			"y": 436
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Cancel",
+		"tags": "",
+		"body": "",
+		"position": {
+			"x": 626,
+			"y": 616
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Open",
+		"tags": "",
+		"body": "<<if $RHRabbiDoorUnlocked>>\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner MainStreet>>\n<<else>>\n    La porte est fermée.\n<<endif>>",
+		"position": {
+			"x": 634,
+			"y": 364
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Lock",
+		"tags": "",
+		"body": "Un clic distinct se fait entendre.\n<<set $RHRabbiDoorUnlocked to false>>",
+		"position": {
+			"x": 631,
+			"y": 78
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Unlock",
+		"tags": "",
+		"body": "Un clic rassurant se fait entendre.\n<<set $RHRabbiDoorUnlocked to true>>",
+		"position": {
+			"x": 368,
+			"y": 78
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNote2",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n11 février 1874\nL'argile a pris vie.",
+		"position": {
+			"x": -252,
+			"y": -84
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNote3",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n25 février 1874\nLa créature est bien plus surprenante que prévu, elle apprend vite, et nous avons pu parvenir à communiquer par écrit, mais elle dispose encore d'une mentalité enfantine.\nJe décide de l'appeler Josef après mûre réflexion. Le nom Petr aurait été une blague de bien trop mauvais goût.",
+		"position": {
+			"x": -10,
+			"y": -80
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNote6",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n24 mars\nLa présence de Josef est une bénédiction. Lorsqu'il n'erre pas dans les rues à l'affut de violences, il prend soin de ma vieillesse.\nIl faudrait tout de même que je consulte un médecin maintenant que j'ai réussi à donner vie à une légende.",
+		"position": {
+			"x": -17,
+			"y": 153
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNote5",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n16 mars 1874\nJe le savais, mais il me faut faire mes adieux à Josef. Je ne souhaite pas courir de risques en le laissant réveiller durant ces prochains jours.\nHeureusement que sa personnalité sera comme neuve une fois le sabbat passé.",
+		"position": {
+			"x": -254,
+			"y": 156
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNote4",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n2 mars 1874\nJ'ai caché le reste de mes manuscripts et journaux. Je ne sais pas ce que Josef serait capable de comprendre.\nC'est mieux ainsi.",
+		"position": {
+			"x": -492,
+			"y": 149
+		},
+		"colorID": 0
+	}
+]

@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SimonScene.unity
+    path: Assets/Scenes/tmp/SimonScene.unity
     guid: 0b864319514d3d4409c37142827a6791
   - enabled: 1
-    path: Assets/Scenes/SimonScene2.unity
+    path: Assets/Scenes/tmp/SimonScene2.unity
     guid: b3a266b24563b6a449714a93ab16fbcc
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/tmp/SampleScene.unity
     guid: 6b482e2314c050941a55bae907a0d62f
   m_configObjects: {}
