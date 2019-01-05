@@ -115,6 +115,7 @@ namespace Yarn.Unity.Example
 			// Show the text
 			lineText.gameObject.SetActive(true);
 
+			isSkipping = false;
 			if (textSpeed > 0.0f)
 			{
 				// Display the line one character at a time
@@ -262,6 +263,12 @@ namespace Yarn.Unity.Example
 			{
 				isSkipping = true;
 			}
+		}
+
+		[YarnCommand("LoadScene")]
+		public void LoadScene(string sceneName)
+		{
+			GameManager.Instance.LoadLevel(sceneName);
 		}
 
 		[YarnCommand("ChangePitch")]
