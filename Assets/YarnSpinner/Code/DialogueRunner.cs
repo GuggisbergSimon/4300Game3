@@ -48,7 +48,7 @@ namespace Yarn.Unity
 		public TextAsset[] sourceText;
 
 		/// The group of JSON files to be used for this language
-		[SerializeField] private LocalisedStringGroup[] stringGroups;
+		[SerializeField] private LocalisedStringGroup[] stringGroups = null;
 
 		/// Language debugging options
 		[SerializeField] private bool shouldOverrideLanguage = false;
@@ -56,10 +56,10 @@ namespace Yarn.Unity
 		[SerializeField] private SystemLanguage overrideLanguage = SystemLanguage.English;
 
 		/// Our variable storage
-		[SerializeField] private Yarn.Unity.VariableStorageBehaviour variableStorage;
+		[SerializeField] private Yarn.Unity.VariableStorageBehaviour variableStorage = null;
 
 		/// The object that will handle the actual display and user input
-		[SerializeField] private Yarn.Unity.DialogueUIBehaviour dialogueUI;
+		[SerializeField] private Yarn.Unity.DialogueUIBehaviour dialogueUI = null;
 
 		/// Which node to start from
 		[SerializeField] private string startNode = Yarn.Dialogue.DEFAULT_START;
@@ -69,8 +69,6 @@ namespace Yarn.Unity
 
 		/// Tests to see if the dialogue is running
 		public bool isDialogueRunning { get; private set; }
-
-		[SerializeField] private bool automaticCommands = true;
 
 		/// Our conversation engine
 		/** Automatically created on first access

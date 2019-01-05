@@ -1,0 +1,222 @@
+[
+	{
+		"title": "MSGuide",
+		"tags": "",
+		"body": "Citadin : Bonjour, je peux vous aider ?\n    [[Non|MSGuide.GoodBye]]\n<<if not visited(\"MSPrisonGuard\")>>\n    [[Où se trouve la prison ?|MSGuide.PrisonTip]]\n<<elseif not visited(\"MSPrisonGuard.Trdelnik\")>>\n    [[Comment convaincre le garde de la prison ?|MSGuide.GuardTip]]\n<<endif>>\n<<if $PIsInvestigating>>\n    [[Nuit du 1er mai ?|MSGuide.1Mai]]\n    [[Incidents étranges ou remarquables ?|MSGuide.Incidents]]\n<<endif>>\n",
+		"position": {
+			"x": -1250,
+			"y": -13
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard",
+		"tags": "",
+		"body": "<<if not visited(\"MSPrisonGuard.Convince\")>>\n    Garde : Halte, quel est la raison de votre passage à la prison ?\n    [[*Faire demi-tour*|MSPrisonGuard.GoodBye]]\n    [[Je souhaite voir Dalibor.|MSPrisonGuard.Convince]]\n<<else>>\n    <<if not visited(\"MSPrisonGuard.Trdelnik\")>>\n        Garde : Alors, vous avez réfléchi à un argument convaincant ?\n        [[*Faire demi-tour*|MSPrisonGuard.GoodBye]]\n        [[Oui|MSPrisonGuard.Convince]]\n    <<else>>\n        Garde : Qu'est-ce qu'il y a ? J'ai quelque chose sur ma figure ?\n        [[MSPrisonGuard.GoodBye]]\n    <<endif>>\n<<endif>>",
+		"position": {
+			"x": -304,
+			"y": -590
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSBaker",
+		"tags": "",
+		"body": "Un boulanger vend plusieurs types de pâtisserie.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Boulanger : Ouh ça date un peu, c'était la nuit du meurtre près de la rive ? Comme dit aux enquêteurs, en préparant le pain, j'ai entendu un éclat de voix rapidement étouffé.\n    Boulanger : Je n'y ai pas prêté davantages d'attention. Et depuis, pas un jour ne passe sans que j'imagine des nouveaux éclats à travers la brume du matin.\n    Boulanger : ...\n->Incidents étranges ou remarquables ?\n    Boulanger : Un jeune homme a pêché un poisson en argent. Vous pouvez imaginez ça ? Moi non plus.\n->Regarder les pâtisseries disponibles.\n    [[MSBaker.1]]\n<<else>>\n[[MSBaker.1]]\n<<endif>>",
+		"position": {
+			"x": -954,
+			"y": -535
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard.Convince",
+		"tags": "",
+		"body": "Garde : Bien, je vous écoute.\n[[*Changer d'avis et faire demi-tour*|MSPrisonGuard.GoodBye]]\n[[*Montrer la lettre de Dalibor*|MSPrisonGuard.Letter]]\n<<if $MSBoughtATrdelnik is true>>\n[[*Offrir un trdelnik*|MSPrisonGuard.Trdelnik]]\n<<endif>>",
+		"position": {
+			"x": -445,
+			"y": -302
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard.GoodBye",
+		"tags": "",
+		"body": "<<if not visited(\"MSPrisonGuard.Convince\")>>\nGarde : Bonne journée ?\n<<else>>\nGarde : Bon vent !\n<<endif>>",
+		"position": {
+			"x": -162,
+			"y": -297
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard.Letter",
+		"tags": "",
+		"body": "Garde : Il semblerait que vous soyez bien l'ami de ce Dalibor. Et ça change quoi ? Restez pas dans mes pattes.\n[[MSPrisonGuard.GoodBye]]",
+		"position": {
+			"x": -313,
+			"y": -3
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonGuard.Trdelnik",
+		"tags": "",
+		"body": "Garde : Oh.\nGarde : Si vous me prenez par les sentiments...\nGarde : ...\nGarde : Passez donc avant que je ne change d'avis.",
+		"position": {
+			"x": -578,
+			"y": -5
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSBaker.2",
+		"tags": "",
+		"body": "->[Choix précédents]\n    [[MSBaker.1]]\n->Acheter un Trdelnik\n    <<set $MSBoughtATrdelnik to true>>\n->Acheter un Marlenka\n->Acheter un Makový koláček",
+		"position": {
+			"x": -1106,
+			"y": -257
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSBaker.1",
+		"tags": "",
+		"body": "->*Revenir sur ses pas*\n->*Acheter un Strudl*\n->*Acheter un Medovnik*\n->[Autres Choix]\n    [[MSBaker.2]]",
+		"position": {
+			"x": -798,
+			"y": -262
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSPrisonDoor",
+		"tags": "",
+		"body": "<<if not visited(\"MSPrisonGuard.Trdelnik\")>>\nLa porte de la prison est fermée et sous la surveillance d'un garde.\n<<else>>\nSe rendre à la prison ?\n->Non\n    <<stop>>\n->Oui\n    <<LoadScene DialogueRunner Prison>>\n<<endif>>",
+		"position": {
+			"x": -1958,
+			"y": -422
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGolem",
+		"tags": "",
+		"body": "<<if $MSMetGolem is false>>\nPassant : ...\n->*Faire demi-tour*\n->Bonjour\n    Passant : ...\n    ->*Faire demi-tour*\n    ->Il fait beau temps pour la saison, vous ne trouvez pas ?\n        Passant : ...\n        ->*Faire demi-tour*\n        ->Je dirais même que le fond de l'air est frais.\n            ->*Faire demi-tour*\n            ->Laïho, laïho...\n                Passant : ...\n                ->*Faire demi-tour*\n                ->On vous a déjà dit que vous n'étiez pas le genre de type bavard ?\n                    Passant : ...\n                    ->*Faire demi-tour*\n                    ->Oui je pensais exactement la même chose.\n                        Passant : ...\n                        ->*Faire demi-tour*\n                        ->Qui est-ce qui peut bien vouloir passer du temps à entretenir une discussion unilatérale ?\n                            *Le passant tend un carnet sur lesquels il est écrit : \"Je suis muet.*\n                            Passant : ...\n                            <<set $MSMetGolem to true>>\n                            ->*Faire demi-tour*\n                            ->...\n<<else>>\nJe ferais mieux de ne pas le déranger, je me suis déjà bien ridiculisé.\n<<endif>>",
+		"position": {
+			"x": -1647,
+			"y": -428
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSCrimeScene",
+		"tags": "",
+		"body": "Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.\n<<if $PIsInvestigating>>\nC'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.\n->Ne rien faire\n->Rechercher les environs\n    [...]\n    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.\n    Il faut que chercher des indices ailleurs, mais où ?\n<<endif>>",
+		"position": {
+			"x": -1664,
+			"y": -21
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGuide.PrisonTip",
+		"tags": "",
+		"body": "Citadin : Vous ne pouvez pas la louper, continuez tout droit, traversez le pont et vous y êtes.\n",
+		"position": {
+			"x": -1243,
+			"y": 295
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGuide.GuardTip",
+		"tags": "",
+		"body": "Citadin : Le garde, vous parlez de Jan ? Je ne le pense pas capable de résister à un trdelník.\n->Merci pour l'information.\n    Citadin : Il n'y a pas de quoi.\n->Trd... quoi ?\n    Citadin : Trdelník, c'est une variété de gâteau à la broche. Vous devriez en trouvez à la boulangerie au coin de la rue.\n",
+		"position": {
+			"x": -990,
+			"y": 297
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGuide.GoodBye",
+		"tags": "",
+		"body": "Citadin : Si vous avez besoin d'aide, n'hésitez pas à me rendre visite.",
+		"position": {
+			"x": -748,
+			"y": 299
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGuide.1Mai",
+		"tags": "",
+		"body": "Citadin : Ah il y a eu ce meurtre le 1er mai, une sauvagerie totale. Encore heureux que justice soit faite et que le meurtrier soit sous les barreaux !\nNikola : ...",
+		"position": {
+			"x": -1498,
+			"y": 295
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSTownswoman",
+		"tags": "",
+		"body": "<<if $PIsInvestigating>>\nPassante : Bonjour.\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passante : Vous ne connaissez pas l'histoire ? On a eu un meurtre lors de cette nuit !\n    Passante : J'ai été tant choquée en découvrant le corps sans vie de...comment s'appelait-il déjà ce clochard ? Qu'importe.\n    Passante : Je disais donc : j'ai été tant choquée en découvrant ce corps sans de vie, au milieu d'une mare de sang et à côté du corps, le meurtrier qui dort !\n    Passante : Dalibor de Kozojed !\n    Passante : Je me suis empressée de contacter les gardes qui ont eu la situation en main en moins de deux.\n    Passante : Je savais qu'il ne fallait pas faire confiance à ce nationaliste de Dalibor.\n    ->*Faire demi tour*\n    ->Auriez vous plus de détails à me raconter ?\n        Passante : Non, je ne souhaitais pour rien au monde rester un moment de plus près d'un homme aussi dangereux.\n->Incidents étranges ou remarquables ?\n    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison proche du pont ?\n    Passante : Cette maison est abandonnée depuis plusieurs semaines déjà, mais je suis convaincu que des clochards ou gens louchent y séjournent.\n    Passante : Vous pensez que je radote c'est ça ? Je n'ai tout de même pas imaginé les bruits qui en sortent, si ?\n    Nikola : ...\n<<endif>>",
+		"position": {
+			"x": -1957,
+			"y": -23
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSGuide.Incidents",
+		"tags": "",
+		"body": "Citadin : Pas étrange, mais remarquable. Le Rabbi Judah Loew ben Bezalel est mort il y a deux mois.\nCitadin : La tuberculose est définitivement une triste maladie. Loew manque à beaucoup dans ce quartier.",
+		"position": {
+			"x": -1757,
+			"y": 300
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSRabbiDoor",
+		"tags": "",
+		"body": "L'addresse est au nom de Rabbi Judah Loew ben Bezalel.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse ni aucun bruit.\n->Ouvrir la porte\n    La porte est fermée.",
+		"position": {
+			"x": -2465,
+			"y": 216
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSHouse1Door",
+		"tags": "",
+		"body": "L'addresse est au nom de Jakub et Alžběta Novák.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.\n->Ouvrir la porte\n    La porte est fermée",
+		"position": {
+			"x": -2490,
+			"y": -297
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSHouse2Door",
+		"tags": "",
+		"body": "L'addresse est au nom de Jolana et Ivo Svoboda.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse\n->Ouvrir la porte\n    La porte est fermée",
+		"position": {
+			"x": -2245,
+			"y": -293
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSRabbiBackDoor",
+		"tags": "",
+		"body": "Il s'agit de la porte arrière d'une maison.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse ni aucun bruit.\n->Ouvrir la porte\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner RabbiHouse>>",
+		"position": {
+			"x": -2225,
+			"y": 218
+		},
+		"colorID": 0
+	}
+]

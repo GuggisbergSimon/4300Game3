@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemDialogue : Interactive
 {
-	[SerializeField] private string itemName = "";
 	[SerializeField] private string talkToNode = "";
 	public override void Interact()
 	{

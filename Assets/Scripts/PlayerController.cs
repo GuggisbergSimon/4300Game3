@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Range(1, 10)] private float jumpSpeed = 5.0f;
 	[SerializeField, Range(1, 10)] private float speed = 5.0f;
 	[SerializeField, Range(1, 10)] private float climbingSpeed = 2.0f;
+	[SerializeField, Range(0, 1)] private float verticalThresholdInteract = 0.3f;
 	[SerializeField] private GameObject groundDetector = null;
 	private TriggerDetector groundDetectorTrigger;
 	private bool hasPressedJump;
@@ -150,8 +151,7 @@ public class PlayerController : MonoBehaviour
 				}
 
 				//code for interacting with interactives
-				if ((interactives.Count > 0 && (Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) &&
-				     !isAirborne))
+				if (interactives.Count > 0 && Input.GetAxis("Vertical") > verticalThresholdInteract && !isAirborne)
 				{
 					GameObject closestToPlayer = interactives[0];
 					foreach (var item in interactives)
@@ -163,8 +163,10 @@ public class PlayerController : MonoBehaviour
 						}
 					}
 
-					closestToPlayer.GetComponent<Interactive>().Interact();
+					horizontalInput = 0;
+					hasPressedJump = false;
 					myRigidbody2D.velocity = Vector2.zero;
+					closestToPlayer.GetComponent<Interactive>().Interact();
 				}
 
 				break;

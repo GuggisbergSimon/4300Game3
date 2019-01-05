@@ -2,20 +2,20 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hello there.\nLooking great\nwanna hear a story ?\n-> Yes.\n    Changed my mind. \n    Get lost loser !\n-> No.\n    Once upon a time there were three people living happily ever after.\n    And nothing changed.\n    Great isn't it ?\n    -> Yes.\n        I knew it.\n    -> No.\n        Get lost loser !",
+		"body": "<<if visited(\"Start\") is false>>\n    Hello there.\n    Looking great\n<<endif>>\n<<if $HeardAStory is false>>\n    wanna hear a story ?\n    -> Yes.\n        <<set $HeardAStory to true>>\n        Changed my mind.\n    -> No.\n        Once upon a time there were three people living happily ever after.\n        And nothing changed.\n        Great isn't it ?\n        -> Yes.\n            I knew it.\n            <<stop>>\n        -> No.\n<<endif>>\nGet lost loser !",
 		"position": {
-			"x": 566,
-			"y": 39
+			"x": 548,
+			"y": -40
 		},
 		"colorID": 0
 	},
 	{
 		"title": "copypasta",
 		"tags": "",
-		"body": "Gomenasai, my name is Ken-Sama.\r\nSkip ?\r\n-> Yes.\r\n    <<stop>>\r\n-> No.\r\n    You have been warned.\r\nI'm a 27 year old American Otaku (Anime fan for you gaijins). I draw Anime and Manga on my tablet, and spend my days perfecting my art and playing superior Japanese games. (Disgaea, Final Fantasy, Persona series)\r\nI train with my Katana every day, this superior weapon can cut clean through steel because it is folded over a thousand times, and is vastly superior to any other weapon on earth. I earned my sword license two years ago, and I have been getting better every day.\r\nI speak Japanese fluently, both Kanji and the Osaka dialect, and I write fluently as well. I know everything about Japanese history and their bushido code, which I follow 100%\r\nWhen I get my Japanese visa, I am moving to Tokyo to attend a prestigious High School to learn more about their magnificent culture. I hope I can become an animator for Studio Ghibli or a game designer!\r\nI own several kimonos, which I wear around town. I want to get used to wearing them before I move to Japan, so I can fit in easier. I bow to my elders and seniors and speak Japanese as often as I can, but rarely does anyone manage to respond.\r\nWish me luck in Japan! ",
+		"body": "Gomenasai, my name is Ken-Sama.\r\nSkip ?\r\n-> Yes.\r\n    <<stop>>\r\n-> No.\r\n    You have been warned.\r\nI'm a 27 year old American Otaku (Anime fan for you gaijins). I draw Anime and Manga on my tablet, and spend my days perfecting my art and playing superior Japanese games. (Disgaea, Final Fantasy, Persona series)\r\n<<ChangePitch DialogueRunner 0.1>>\r\nI train with my Katana every day, this superior weapon can cut clean through steel because it is folded over a thousand times, and is vastly superior to any other weapon on earth. I earned my sword license two years ago, and I have been getting better every day.\r\n<<ChangePitch DialogueRunner 1.0>>\r\nI speak Japanese fluently, both Kanji and the Osaka dialect, and I write fluently as well. I know everything about Japanese history and their bushido code, which I follow 100%\r\nWhen I get my Japanese visa, I am moving to Tokyo to attend a prestigious High School to learn more about their magnificent culture. I hope I can become an animator for Studio Ghibli or a game designer!\r\nI own several kimonos, which I wear around town. I want to get used to wearing them before I move to Japan, so I can fit in easier. I bow to my elders and seniors and speak Japanese as often as I can, but rarely does anyone manage to respond.\r\nWish me luck in Japan! ",
 		"position": {
-			"x": 101,
-			"y": 151
+			"x": 114,
+			"y": 89
 		},
 		"colorID": 0
 	}
