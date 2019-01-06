@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/tmp/SimonScene.unity
-    guid: 0b864319514d3d4409c37142827a6791
+    path: Assets/Scenes/MainStreet.unity
+    guid: d403d66de9feb034680cab2d4ea37ef2
   - enabled: 1
-    path: Assets/Scenes/tmp/SimonScene2.unity
-    guid: b3a266b24563b6a449714a93ab16fbcc
-  - enabled: 1
-    path: Assets/Scenes/tmp/SampleScene.unity
-    guid: 6b482e2314c050941a55bae907a0d62f
+    path: Assets/Scenes/RabbiHouse.unity
+    guid: 0f3bacb86ddab7c4fb7ba0574b1eb94f
   m_configObjects: {}
