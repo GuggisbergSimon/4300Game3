@@ -82,9 +82,9 @@
 	{
 		"title": "RHNotes.2",
 		"tags": "",
-		"body": "->[Premières entrées]\n    [[RHNotes.1]]\n->25 février 1874\n    La créature est bien plus surprenante que prévu, elle apprend vite, et nous avons pu parvenir à communiquer par écrit, mais elle dispose encore d'une mentalité enfantine.\n    Je décide de l'appeler Josef après mûre réflexion. Le nom Petr aurait été une pique de bien trop mauvais goût.\n    [[RHNotes.2]]\n->16 mars 1874\n    Je le savais, mais il me faut faire mes adieux à Josef. Je ne souhaite pas courir de risques en le laissant réveiller durant les jours de sabbats du calendrier de la Roue de l'année.\n    Nul ne sait s'il sera capable de garder le contrôle de sa rationalité.\n    [[RHNotes.2]]\n->24 mars\n    La présence de Josef est une bénédiction. Lorsqu'il n'erre pas dans les rues à l'affut de violences, il prend soin de ma vieillesse.\n    Il faudrait que je l'envoie me chercher un médecin, chose qui a dû attendre le résultat de ces expériences.\n    [[RHNotes.2]]",
+		"body": "->[Premières entrées]\n    [[RHNotes.1]]\n->25 février 1874\n    La créature est bien plus surprenante que prévu, elle apprend vite, et nous avons pu parvenir à communiquer par écrit, mais elle dispose encore d'une mentalité enfantine.\n    Je décide de l'appeler Josef après mûre réflexion. Le nom Petr aurait été une pique de bien trop mauvais goût.\n    [[RHNotes.2]]\n->16 mars 1874\n    Je le savais, mais il me faut faire mes adieux à Josef. Je ne souhaite pas courir de risques en le laissant réveiller durant les jours de sabbats du calendrier de la Roue de l'année.\n    Nul ne sait s'il sera capable de garder le contrôle de sa rationalité.\n    Quelle malédiction tout de même, être condamné à un cycle de vie de deux mois.\n    [[RHNotes.2]]\n->24 mars\n    La présence de Josef est une bénédiction. Lorsqu'il n'erre pas dans les rues à l'affut de violences, il prend soin de ma vieillesse.\n    Il faudrait que je l'envoie me chercher un médecin, chose qui a dû attendre le résultat de ces expériences.\n    [[RHNotes.2]]",
 		"position": {
-			"x": -701,
+			"x": -700,
 			"y": 200
 		},
 		"colorID": 0
@@ -142,10 +142,10 @@
 	{
 		"title": "RHGolem.Failure",
 		"tags": "",
-		"body": "(Me serais-je trompé de personne ?)\n(Navré de vous avoir importuné, je vous demanderai donc de quiter mon logis.)",
+		"body": "(Me serais-je trompé de personne ?)\n(Navré de vous avoir importuné, je vous demanderai donc de quiter mon logis.)\n[[RHGolem.BadEnd]]",
 		"position": {
-			"x": 446,
-			"y": 1388
+			"x": 406,
+			"y": 1371
 		},
 		"colorID": 0
 	},
@@ -202,10 +202,50 @@
 	{
 		"title": "RHGolem.Question3Correct",
 		"tags": "",
-		"body": "(...)\n(C'est vrai.)\n(Et savez-vous quelle est la cause du crime produit le 1er mai ? Révélez moi la vérité)\n->Sabbats de la Roue de l'année\n->Jack the Ripper\n->That was an inside job",
+		"body": "Josef : ...\n(C'est vrai.)\n(Et savez-vous quelle est la cause du crime produit le 1er mai ? Révélez moi la vérité)\n->Alcoolisme\n->Nationalisme tchèque\n->Pogroms\n->Sabbats de la Roue de l'année\n    [[RHGolem.Question4Correct]]\n[[RHGolem.SoftFailure]]",
 		"position": {
-			"x": -326,
-			"y": 2201
+			"x": -331,
+			"y": 2203
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question4Correct",
+		"tags": "",
+		"body": "(Et qu'est-ce donc que cela ?)\n->*Ne pas lui expliquer*\n    [[RHGolem.SoftFailure]]\n->*Lui montrer les notes*\n    (Oh, je comprends.)\n    (Le crime du 1er mai serait donc dû à une crise que j'ai eu lors de cette période ? Et que ce genre de crises sont condamnées à revenir par deux mois d'intervalles ?)\n    Josef : ...\n    (Laissez moi régler cette situation je vous prie. Loew n'a jamais souhaité que cette situation se présente.)\n    Josef quitte la maison sans bruit.\n    [[RHConclusion]]",
+		"position": {
+			"x": 58,
+			"y": 2441
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.SoftFailure",
+		"tags": "",
+		"body": "(Ainsi soit-il.)\n(Cette affaire n'ayant aucun rapport avec moi et le fait que vous connaissez ma nature font que je vais vous laisser.)\n(Vous n'entendrez plus jamais parlez de moi.)\n(Adieu.)\n[[RHGolem.BadEnd]]",
+		"position": {
+			"x": 436,
+			"y": 2206
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHConclusion",
+		"tags": "",
+		"body": "...\nUn homme se présente plus tard aux portes de la prison. Sur le carnet qu'il tend au garde il est inscrit :\n\"Je suis coupable du meurtre du 1er mai.\"\n...\nDalibor est relâché quelques jours plus tard.\nMême si son séjour en prison ternira certainement sa carrière, il est à nouveau libre, et, plus important, vivant.\n...\nUn matin en prison, un gardien fait son tour des cellules routiniers.\nEn arrivant devant celle de Josef, il doit y regarder à deux fois avant d'en croire ses yeux.\nSur les dalles de la cellule ne restent plus que morceaux d'argile ressemblant vaguement à des membres humains ainsi qu'une feuille de papier, s'envolant au vent.\nUne légende s'éteint.",
+		"position": {
+			"x": 724,
+			"y": 2451
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.BadEnd",
+		"tags": "",
+		"body": "...\nN'ayant pu prouver l'innocence de Dalibor, Nikola erre de longues heures dans les rues de Prague.\n...\nLes jours passent, la date de l'exécution de Dalibor se rapprochent.\n...\nDalibor meurt.\n...\nUn nouveau crime tout aussi sanglant que celui du 1er mai est commis dans une autre partie de la ville, mais aucun coupable n'est identifié. on parle du monstre de Prague, du fantôme de Dalibor. Les rumeurs les plus folles se mettent à circuler.\nUne légende est née.",
+		"position": {
+			"x": 713,
+			"y": 1712
 		},
 		"colorID": 0
 	}
