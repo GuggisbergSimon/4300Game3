@@ -104,7 +104,7 @@
 		"tags": "",
 		"body": "<<if $MSMetGolem is false>>\nPassant : ...\n->*Faire demi-tour*\n->Bonjour\n    Passant : ...\n    ->*Faire demi-tour*\n    ->Il fait beau temps pour la saison, vous ne trouvez pas ?\n        Passant : ...\n        ->*Faire demi-tour*\n        ->Je dirais même que le fond de l'air est frais.\n            ->*Faire demi-tour*\n            ->Laïho, laïho...\n                Passant : ...\n                ->*Faire demi-tour*\n                ->On vous a déjà dit que vous n'étiez pas le genre de type bavard ?\n                    Passant : ...\n                    ->*Faire demi-tour*\n                    ->Oui je pensais exactement la même chose.\n                        Passant : ...\n                        ->*Faire demi-tour*\n                        ->Qui est-ce qui peut bien vouloir passer du temps à entretenir une discussion unilatérale ?\n                            *Le passant tend un carnet sur lesquels il est écrit : \"Je suis muet.*\n                            Passant : ...\n                            <<set $MSMetGolem to true>>\n                            ->*Faire demi-tour*\n                            ->...\n<<else>>\nJe ferais mieux de ne pas le déranger, je me suis déjà bien ridiculisé.\n<<endif>>",
 		"position": {
-			"x": -1647,
+			"x": -1648,
 			"y": -428
 		},
 		"colorID": 0
@@ -112,7 +112,7 @@
 	{
 		"title": "MSCrimeScene",
 		"tags": "",
-		"body": "Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.\n<<if $PIsInvestigating>>\nC'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.\n->Ne rien faire\n->Rechercher les environs\n    [...]\n    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.\n    Il faut que chercher des indices ailleurs, mais où ?\n<<endif>>",
+		"body": "Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.\n<<if $PIsInvestigating>>\nC'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.\n->*Faire demi-tour*\n->*Rechercher les environs*\n    [...]\n    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.\n    Il faut que chercher des indices ailleurs, mais où ?\n<<endif>>",
 		"position": {
 			"x": -1664,
 			"y": -21
@@ -182,7 +182,7 @@
 	{
 		"title": "MSRabbiDoor",
 		"tags": "",
-		"body": "L'addresse est au nom de Rabbi Judah Loew ben Bezalel.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse ni aucun bruit.\n->Ouvrir la porte\n    La porte est fermée.",
+		"body": "L'addresse est au nom de Rabbi Judah Loew ben Bezalel.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit.\n->*Ouvrir la porte*\n    <<if $RHRabbiDoorUnlocked>>\n        La porte s'ouvre sans heurt.\n        <<LoadScene DialogueRunner RabbiHouse>>\n    <<else>>\n        La porte est fermée.\n    <<endif>>",
 		"position": {
 			"x": -2465,
 			"y": 216
@@ -192,7 +192,7 @@
 	{
 		"title": "MSHouse1Door",
 		"tags": "",
-		"body": "L'addresse est au nom de Jakub et Alžběta Novák.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.\n->Ouvrir la porte\n    La porte est fermée",
+		"body": "L'addresse est au nom de Jakub et Alžběta Novák.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.\n->*Ouvrir la porte*\n    La porte est fermée",
 		"position": {
 			"x": -2490,
 			"y": -297
@@ -202,7 +202,7 @@
 	{
 		"title": "MSHouse2Door",
 		"tags": "",
-		"body": "L'addresse est au nom de Jolana et Ivo Svoboda.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse\n->Ouvrir la porte\n    La porte est fermée",
+		"body": "L'addresse est au nom de Jolana et Ivo Svoboda.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse\n->*Ouvrir la porte*\n    La porte est fermée",
 		"position": {
 			"x": -2245,
 			"y": -293
@@ -212,9 +212,9 @@
 	{
 		"title": "MSRabbiBackDoor",
 		"tags": "",
-		"body": "Il s'agit de la porte arrière d'une maison.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse ni aucun bruit.\n->Ouvrir la porte\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner RabbiHouse>>",
+		"body": "Il s'agit de la porte arrière d'une maison.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit.\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner RabbiHouse>>",
 		"position": {
-			"x": -2225,
+			"x": -2213,
 			"y": 218
 		},
 		"colorID": 0
