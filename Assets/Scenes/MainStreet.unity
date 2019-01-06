@@ -2026,6 +2026,16 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1534691266583572951, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+        type: 3}
+      propertyPath: m_Name
+      value: Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641837355906338832, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248fc1d56fb0e5c46b909e856a63dc8a, type: 3}
 --- !u!4 &2117118817 stripped

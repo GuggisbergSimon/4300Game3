@@ -265,6 +265,12 @@ namespace Yarn.Unity.Example
 			}
 		}
 
+		[YarnCommand("FadeToBlack")]
+		public void FadeToBlack(string time)
+		{
+			
+		}
+
 		[YarnCommand("LoadScene")]
 		public void LoadScene(string sceneName)
 		{
