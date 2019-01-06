@@ -115,6 +115,7 @@ namespace Yarn.Unity.Example
 			// Show the text
 			lineText.gameObject.SetActive(true);
 
+			isSkipping = false;
 			if (textSpeed > 0.0f)
 			{
 				// Display the line one character at a time
@@ -181,7 +182,8 @@ namespace Yarn.Unity.Example
 				i++;
 			}
 
-			eventSystem.SetSelectedGameObject(optionButtons[3].gameObject);
+			//todo find more elegant solution
+			eventSystem.SetSelectedGameObject(optionButtons[1].gameObject);
 			eventSystem.SetSelectedGameObject(optionButtons[0].gameObject);
 
 			// Record that we're using it
@@ -261,6 +263,12 @@ namespace Yarn.Unity.Example
 			{
 				isSkipping = true;
 			}
+		}
+
+		[YarnCommand("LoadScene")]
+		public void LoadScene(string sceneName)
+		{
+			GameManager.Instance.LoadLevel(sceneName);
 		}
 
 		[YarnCommand("ChangePitch")]
