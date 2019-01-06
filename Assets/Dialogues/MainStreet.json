@@ -22,7 +22,7 @@
 	{
 		"title": "MSBaker",
 		"tags": "",
-		"body": "Un boulanger vend plusieurs types de pâtisserie.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Boulanger : Ouh ça date un peu, c'était la nuit du meurtre près de la rive ? Comme dit aux enquêteurs, en préparant le pain, j'ai entendu un éclat de voix rapidement étouffé.\n    Boulanger : Je n'y ai pas prêté davantages d'attention. Et depuis, pas un jour ne passe sans que j'imagine des nouveaux éclats à travers la brume du matin.\n    Boulanger : ...\n->Incidents étranges ou remarquables ?\n    Boulanger : Un jeune homme a pêché un poisson en argent. Vous pouvez imaginez ça ? Moi non plus.\n->Regarder les pâtisseries disponibles.\n    [[MSBaker.1]]\n<<else>>\n[[MSBaker.1]]\n<<endif>>",
+		"body": "Il s'agit d'une boulangerie. On y vend plusieurs types de pâtisserie.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Boulanger : Ouh ça date un peu, c'était la nuit du meurtre près de la rive ? Comme dit aux enquêteurs, en préparant le pain, j'ai entendu un éclat de voix rapidement étouffé.\n    Boulanger : Je n'y ai pas prêté davantages d'attention. Et depuis, pas un jour ne passe sans que j'imagine des nouveaux éclats à travers la brume du matin.\n    Boulanger : ...\n->Incidents étranges ou remarquables ?\n    Boulanger : Un jeune homme a pêché un poisson en argent. Vous pouvez imaginez ça ? Moi non plus.\n->Regarder les pâtisseries disponibles.\n    [[MSBaker.1]]\n<<else>>\n[[MSBaker.1]]\n<<endif>>",
 		"position": {
 			"x": -954,
 			"y": -535
@@ -216,6 +216,16 @@
 		"position": {
 			"x": -2213,
 			"y": 218
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSIntroduction",
+		"tags": "",
+		"body": "<<FadeToBlack DialogueRunner true>>\nLettre reçue le 20 mai 1874.\n\"Cher Nikola, ces nouvelles que tu reçois de ma part ne sont pas des plus joyeuses.\"\n\"À vrai dire je te conseillerais même de te verser un verre d'alcool avant de continuer cette lettre.\"\n\"Je t'écris depuis la prison de Pragues, après avoir été arrêté pour un meurtre que je n'ai pas commis.\"\n\"Certaines personnes souhaitent faire taire les voix nationalistes et il se trouve que je suis le bouc émissaire parfait.\"\n\"Si tu parviendrais à rétablir la vérité en ma place, je te serai éternellement reconnaissant.\"\n\"Je t'attends aux geôles de Pragues, ton ami Dalibor de Kozojed\"\n...\n<<FadeToBlack DialogueRunner false>>\nLe voyage jusqu'à Pragues s'est passé sans encombre. Il est maintenant le premier du mois de juin.",
+		"position": {
+			"x": -1396,
+			"y": -427
 		},
 		"colorID": 0
 	}

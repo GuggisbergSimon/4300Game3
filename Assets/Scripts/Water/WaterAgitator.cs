@@ -5,10 +5,10 @@ using UnityEngine;
 public class WaterAgitator : MonoBehaviour
 {
 	private Rigidbody2D myRigidBody2D;
-	[SerializeField, Range(0, 10)] private float minTime;
-	[SerializeField, Range(0, 10)] private float maxTime;
-	[SerializeField] private GameObject leftBorder;
-	[SerializeField] private GameObject rightBorder;
+	[SerializeField, Range(0, 10)] private float minTime=0.0f;
+	[SerializeField, Range(0, 10)] private float maxTime=0.0f;
+	[SerializeField] private GameObject leftBorder=null;
+	[SerializeField] private GameObject rightBorder=null;
 	
 	private void Start()
 	{

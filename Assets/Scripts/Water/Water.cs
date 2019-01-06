@@ -23,7 +23,7 @@ public class Water : MonoBehaviour
 	[SerializeField] private float width = 0.0f;
 	[SerializeField] private float top = 0.0f;
 	[SerializeField] private float bottom = 0.0f;
-	[SerializeField] private GameObject splash = null;
+	//[SerializeField] private GameObject splash = null;
 	[SerializeField] private Material mat = null;
 	[SerializeField] private GameObject waterMesh = null;
 

@@ -2101,6 +2101,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1991203502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1534691266583572951, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2104823827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2104823827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2370,6 +2376,21 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4955193877961925841, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+        type: 3}
+      propertyPath: startNode
+      value: MSIntroduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955193877961925841, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+        type: 3}
+      propertyPath: startAutomatically
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955193877961925843, guid: 248fc1d56fb0e5c46b909e856a63dc8a,
+        type: 3}
+      propertyPath: blackGameObject
+      value: 
+      objectReference: {fileID: 1991203502}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248fc1d56fb0e5c46b909e856a63dc8a, type: 3}
 --- !u!4 &2117118817 stripped
