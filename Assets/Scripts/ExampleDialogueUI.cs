@@ -76,6 +76,8 @@ namespace Yarn.Unity.Example
 		[SerializeField] private RectTransform gameControlsContainer = null;
 
 		[SerializeField] private AudioClip beepTalkingClip = null;
+		[SerializeField] private GameObject blackGameObject=null;
+		private Image blackImage;
 		private EventSystem eventSystem;
 		private bool isSkipping=false;
 		private AudioSource myAudioSource;
@@ -101,7 +103,7 @@ namespace Yarn.Unity.Example
 				continuePrompt.SetActive(false);
 
 			myAudioSource = GetComponent<AudioSource>();
-			
+			blackImage = blackGameObject.GetComponent<Image>();
 		}
 
 		private void OnEnable()
@@ -266,9 +268,16 @@ namespace Yarn.Unity.Example
 		}
 
 		[YarnCommand("FadeToBlack")]
-		public void FadeToBlack(string time)
+		public void FadeToBlack(string boolean)
 		{
-			
+			if (Boolean.Parse(boolean))
+			{
+				blackImage.color=Color.black;
+			}
+			else
+			{
+				blackImage.color = Color.clear;
+			}
 		}
 
 		[YarnCommand("LoadScene")]
