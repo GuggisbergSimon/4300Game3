@@ -122,7 +122,7 @@
 	{
 		"title": "MSGuide.PrisonTip",
 		"tags": "",
-		"body": "Citadin : Vous ne pouvez pas la louper, continuez tout droit, traversez le pont et vous y êtes.\n",
+		"body": "Citadin : Vous ne pouvez pas la louper, continuez tout droit, traversez le pont et vous y êtes.",
 		"position": {
 			"x": -1243,
 			"y": 295
@@ -132,7 +132,7 @@
 	{
 		"title": "MSGuide.GuardTip",
 		"tags": "",
-		"body": "Citadin : Le garde, vous parlez de Jan ? Je ne le pense pas capable de résister à un trdelník.\n->Merci pour l'information.\n    Citadin : Il n'y a pas de quoi.\n->Trd... quoi ?\n    Citadin : Trdelník, c'est une variété de gâteau à la broche. Vous devriez en trouvez à la boulangerie au coin de la rue.\n",
+		"body": "Citadin : Le garde, vous parlez de Jan ? Je ne le pense pas capable de résister à un trdelník.\n->Merci pour l'information.\n    Citadin : Il n'y a pas de quoi.\n->Trd... quoi ?\n    Citadin : Trdelník, c'est une variété de gâteau à la broche. Vous devriez en trouvez à la boulangerie au coin de la rue.",
 		"position": {
 			"x": -990,
 			"y": 297
@@ -160,12 +160,12 @@
 		"colorID": 0
 	},
 	{
-		"title": "MSTownswoman",
+		"title": "MSTownswoman1",
 		"tags": "",
-		"body": "<<if $PIsInvestigating>>\nPassante : Bonjour.\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passante : Vous ne connaissez pas l'histoire ? On a eu un meurtre lors de cette nuit !\n    Passante : J'ai été tant choquée en découvrant le corps sans vie de...comment s'appelait-il déjà ce clochard ? Qu'importe.\n    Passante : Je disais donc : j'ai été tant choquée en découvrant ce corps sans de vie, au milieu d'une mare de sang et à côté du corps, le meurtrier qui dort !\n    Passante : Dalibor de Kozojed !\n    Passante : Je me suis empressée de contacter les gardes qui ont eu la situation en main en moins de deux.\n    Passante : Je savais qu'il ne fallait pas faire confiance à ce nationaliste de Dalibor.\n    ->*Faire demi tour*\n    ->Auriez vous plus de détails à me raconter ?\n        Passante : Non, je ne souhaitais pour rien au monde rester un moment de plus près d'un homme aussi dangereux.\n->Incidents étranges ou remarquables ?\n    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison proche du pont ?\n    Passante : Cette maison est abandonnée depuis plusieurs semaines déjà, mais je suis convaincu que des clochards ou gens louchent y séjournent.\n    Passante : Vous pensez que je radote c'est ça ? Je n'ai tout de même pas imaginé les bruits qui en sortent, si ?\n    Nikola : ...\n<<endif>>",
+		"body": "Passante : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passante : Vous ne connaissez pas l'histoire ? On a eu un meurtre lors de cette nuit !\n    Passante : J'ai été tant choquée en découvrant le corps sans vie de...comment s'appelait-il déjà ce clochard ? Qu'importe.\n    Passante : Je disais donc : j'ai été tant choquée en découvrant ce corps sans de vie, au milieu d'une mare de sang et à côté du corps, le meurtrier qui dort !\n    Passante : Dalibor de Kozojed !\n    Passante : Je me suis empressée de contacter les gardes qui ont eu la situation en main en moins de deux.\n    Passante : Je savais qu'il ne fallait pas faire confiance à ce nationaliste de Dalibor.\n    ->*Faire demi tour*\n    ->Auriez vous plus de détails à me raconter ?\n        Passante : Non, je ne souhaitais pour rien au monde rester un moment de plus près d'un homme aussi dangereux.\n->Incidents étranges ou remarquables ?\n    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison proche du pont ?\n    Passante : Cette maison est abandonnée depuis plusieurs semaines déjà, mais je suis convaincu que des clochards ou gens louchent y séjournent.\n    Passante : Vous pensez que je radote c'est ça ? Je n'ai tout de même pas imaginé les bruits qui en sortent, si ?\n    Nikola : ...\n<<endif>>",
 		"position": {
-			"x": -1957,
-			"y": -23
+			"x": -1976,
+			"y": -121
 		},
 		"colorID": 0
 	},
@@ -226,6 +226,26 @@
 		"position": {
 			"x": -1396,
 			"y": -427
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSTownswoman2",
+		"tags": "",
+		"body": "Passante : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passante : Ah c'est la nuit où l'on a eu un meurtre près de la Moldau ? Quelle triste histoire.\n    Passante : Ils ont trouvé le meurtrier j'espère.\n    ->Pas encore.\n        Passante : Ah c'est donc cela que vous faites, vous enquêtez ? Très malin de le faire en civil, personne ne vous suspectera.\n        Passante : .  .  .\n        Passante : Oh, ne vous en faites pas, votre secret est bien gardé.\n    ->Il est sous les barreaux.\n        Passante : Voilà qui me rassure.\n->Incidents étranges ou remarquables ?\n    Passante : Un chien près des portes de la ville aurait attrapé la rage.\n    Passante : Si vous voyez une bête sauvage dans les rues, méfiez-vous en !\n    Passante : Ce n'est qu'une question de temps avant que la folle bête ne meure.\n<<endif>>",
+		"position": {
+			"x": -1973,
+			"y": 105
+		},
+		"colorID": 0
+	},
+	{
+		"title": "MSTownsMan1",
+		"tags": "",
+		"body": "Passant : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passant : De vous à moi, j'y crois que dalle à  ces histoires de Dalibor qu'est le coupable. C'est encore un coup de l'empire qui veut nous museler.\n    Passant : Moi je dis : vive le peuple tchèque !\n    Passant : . . . Que cela reste entre nous.\n->Incidents étranges ou remarquables ?\n    Passant : Ai entendu des hurlements la nuit, qui venaient de la forêt. J'aurais parié sur des loups mais on en a plus vu depuis bien trop longtemps.\n    Passant : Ces animaux n'aiment pas trop le bruit des grandes villes, vous savez.\n    Passant : Je ne les comprends que trop bien.",
+		"position": {
+			"x": -1976,
+			"y": 317
 		},
 		"colorID": 0
 	}

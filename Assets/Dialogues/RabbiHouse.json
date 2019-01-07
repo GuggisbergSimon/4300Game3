@@ -12,7 +12,7 @@
 	{
 		"title": "RHDoor",
 		"tags": "",
-		"body": "Il s'agit de la porte principale de la maison\n[[*Faire demi-tour*|RHDoor.Cancel]]\n<<if $RHRabbiDoorUnlocked is false>>\n[[*Enlever le verrou*|RHDoor.Unlock]]\n<<else>>\n[[*Remettre le verrou*|RHDoor.Lock]]\n<<endif>>\n[[*Ouvrir la porte*|RHDoor.Open]]\n",
+		"body": "Il s'agit de la porte principale de la maison\n[[*Faire demi-tour*|RHDoor.Cancel]]\n<<if $RHRabbiDoorUnlocked is false>>\n[[*Enlever le verrou*|RHDoor.Unlock]]\n<<else>>\n[[*Remettre le verrou*|RHDoor.Lock]]\n<<endif>>\n[[*Ouvrir la porte*|RHDoor.Open]]",
 		"position": {
 			"x": 368,
 			"y": 354
@@ -114,8 +114,8 @@
 		"tags": "",
 		"body": "L'homme tend son carnet sur lequel il est écrit :\n(Je suis muet.)\n[[RHGolem.Question1]]",
 		"position": {
-			"x": -519,
-			"y": 783
+			"x": -522,
+			"y": 793
 		},
 		"colorID": 0
 	},
@@ -162,7 +162,7 @@
 	{
 		"title": "RHGolem.Question2Correct",
 		"tags": "",
-		"body": "(C'est vrai.)\n(Alors dans ce cas, vous avez dû comprendre ma nature.)\n(Quelle est-elle ?)\n->Domestique\n->Golem\n    [[RHGolem.Question3Correct]]\n->Muet\n->Vampire\n[[RHGolem.Failure]]",
+		"body": "(C'est vrai.)\n(Alors dans ce cas, vous avez dû comprendre ma nature.)\n(Quelle est-elle ?)\n->Domestique\n->Golem\n    [[RHGolem.Question3Correct]]\n->Lycanthrope\n->Muet\n[[RHGolem.Failure]]",
 		"position": {
 			"x": -330,
 			"y": 1930
