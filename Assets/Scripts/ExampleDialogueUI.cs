@@ -76,23 +76,23 @@ namespace Yarn.Unity.Example
 		[SerializeField] private RectTransform gameControlsContainer = null;
 
 		[SerializeField] private AudioClip beepTalkingClip = null;
-		[SerializeField] private GameObject blackGameObject=null;
+		[SerializeField] private GameObject blackGameObject = null;
 		private Image blackImage;
 		private EventSystem eventSystem;
-		private bool isSkipping=false;
+		private bool isSkipping = false;
 		private AudioSource myAudioSource;
-		
+
 		private void Awake()
 		{
 			// Start by hiding the container, line and option buttons
 			if (dialogueContainer != null)
 				dialogueContainer.SetActive(false);
 
-			if (buttonsContainer!=null)
+			if (buttonsContainer != null)
 				buttonsContainer.SetActive(false);
-			
+
 			lineText.gameObject.SetActive(false);
-			
+
 			foreach (var button in optionButtons)
 			{
 				button.gameObject.SetActive(false);
@@ -135,6 +135,7 @@ namespace Yarn.Unity.Example
 						yield return null;
 						break;
 					}
+
 					yield return new WaitForSeconds(textSpeed);
 				}
 			}
@@ -157,7 +158,7 @@ namespace Yarn.Unity.Example
 			// Hide the text and prompt
 			lineText.gameObject.SetActive(false);
 			isSkipping = false;
-			
+
 			if (continuePrompt != null)
 				continuePrompt.SetActive(false);
 		}
@@ -185,7 +186,7 @@ namespace Yarn.Unity.Example
 			}
 
 			//todo find more elegant solution
-			eventSystem.SetSelectedGameObject(optionButtons[1].gameObject);
+			eventSystem.SetSelectedGameObject(optionButtons[4].gameObject);
 			eventSystem.SetSelectedGameObject(optionButtons[0].gameObject);
 
 			// Record that we're using it
@@ -199,7 +200,7 @@ namespace Yarn.Unity.Example
 
 			lineText.gameObject.SetActive(false);
 			buttonsContainer.SetActive(false);
-			
+
 			// Hide all the buttons
 			foreach (var button in optionButtons)
 			{
@@ -272,12 +273,18 @@ namespace Yarn.Unity.Example
 		{
 			if (Boolean.Parse(boolean))
 			{
-				blackImage.color=Color.black;
+				blackImage.color = Color.black;
 			}
 			else
 			{
 				blackImage.color = Color.clear;
 			}
+		}
+
+		[YarnCommand("MovePlayer")]
+		public void MovePlayer(string position)
+		{
+			GameManager.Instance.Player.transform.position = GameObject.Find(position).transform.position;
 		}
 
 		[YarnCommand("LoadScene")]

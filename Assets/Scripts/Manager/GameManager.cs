@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public UIManager MyUiManager => myUiManager;
 	private PlayerController player;
 	public PlayerController Player => player;
-
+	
 	private void OnEnable()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoadingScene;
