@@ -48,9 +48,111 @@ Transform:
   - {fileID: 7597618010750230048}
   - {fileID: 7597618011853372063}
   - {fileID: 7597618011861949526}
+  - {fileID: 6982576845092935690}
+  - {fileID: 6982576845105910655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &743935260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 691076004013481625}
+    m_Modifications:
+    - target: {fileID: 6982576844632514150, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_Name
+      value: townsman 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514144, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: talkToNode
+      value: MSTownsman1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20e6cd54a6acef04386e81ab712a5f32, type: 3}
+--- !u!4 &6982576845105910655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+    type: 3}
+  m_PrefabInstance: {fileID: 743935260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &764511849
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 691076004013481625}
+    m_Modifications:
+    - target: {fileID: 6982576844632514150, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_Name
+      value: townswoman 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982576844632514144, guid: 20e6cd54a6acef04386e81ab712a5f32,
+        type: 3}
+      propertyPath: talkToNode
+      value: MSTownswoman2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20e6cd54a6acef04386e81ab712a5f32, type: 3}
+--- !u!4 &6982576845092935690 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
+    type: 3}
+  m_PrefabInstance: {fileID: 764511849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &691076002649812434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,12 +313,12 @@ PrefabInstance:
     - target: {fileID: 6982576844632514150, guid: 20e6cd54a6acef04386e81ab712a5f32,
         type: 3}
       propertyPath: m_Name
-      value: townswoman
+      value: townswoman 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.46
+      value: 8.57
       objectReference: {fileID: 0}
     - target: {fileID: 6982576844632514147, guid: 20e6cd54a6acef04386e81ab712a5f32,
         type: 3}
