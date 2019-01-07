@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 0}
   gameControlsContainer: {fileID: 0}
   beepTalkingClip: {fileID: 8300000, guid: 9a360c0afc2d0c647846a7d92ba71526, type: 3}
+  blackGameObject: {fileID: 0}
 --- !u!114 &8359596016566000122
 MonoBehaviour:
   m_ObjectHideFlags: 0

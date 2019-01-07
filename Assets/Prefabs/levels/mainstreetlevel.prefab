@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691076004013481625}
   m_Layer: 0
-  m_Name: level
+  m_Name: mainstreetlevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,16 +507,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014847957433854963, guid: 3d8f932f7062d5f4996da76ba7b974a9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014847957433854963, guid: 3d8f932f7062d5f4996da76ba7b974a9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8f932f7062d5f4996da76ba7b974a9, type: 3}
@@ -1057,16 +1047,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014847957433854963, guid: 3d8f932f7062d5f4996da76ba7b974a9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014847957433854963, guid: 3d8f932f7062d5f4996da76ba7b974a9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8f932f7062d5f4996da76ba7b974a9, type: 3}
