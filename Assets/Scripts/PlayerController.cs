@@ -141,6 +141,15 @@ public class PlayerController : MonoBehaviour
 				//updates horizontal input
 				horizontalInput = Input.GetAxis("Horizontal");
 				animator.SetFloat("speed", Mathf.Abs(horizontalInput));
+				//flips the animator gameobject depending on direction
+				if (horizontalInput < 0)
+				{
+					animator.gameObject.transform.forward = Vector3.back;
+				}
+				else
+				{
+					animator.gameObject.transform.forward = Vector3.forward;
+				}
 
 				//code for checking jump input
 				if (Input.GetButtonDown("Jump") && !isAirborne)

@@ -280,10 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b91ebf37097194eb479ef453702b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 49
-  width: 46
-  top: -7
-  bottom: -15
+  left: 50
+  width: 34
+  top: -4
+  bottom: -20
   mat: {fileID: 2100000, guid: 642a9f8c88b0ce544a0f40f091120440, type: 2}
   waterMesh: {fileID: 100000, guid: 2743fd991e890ca49af443dcc6bf896c, type: 3}
 --- !u!114 &1792383430
