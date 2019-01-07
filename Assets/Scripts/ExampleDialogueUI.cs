@@ -186,7 +186,7 @@ namespace Yarn.Unity.Example
 			}
 
 			//todo find more elegant solution
-			eventSystem.SetSelectedGameObject(optionButtons[1].gameObject);
+			eventSystem.SetSelectedGameObject(optionButtons[4].gameObject);
 			eventSystem.SetSelectedGameObject(optionButtons[0].gameObject);
 
 			// Record that we're using it
