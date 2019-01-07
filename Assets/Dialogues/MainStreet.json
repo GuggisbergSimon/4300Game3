@@ -32,7 +32,7 @@
 	{
 		"title": "MSPrisonGuard.Convince",
 		"tags": "",
-		"body": "Garde : Bien, je vous écoute.\n[[*Changer d'avis et faire demi-tour*|MSPrisonGuard.GoodBye]]\n[[*Montrer la lettre de Dalibor*|MSPrisonGuard.Letter]]\n<<if $MSBoughtATrdelnik is true>>\n[[*Offrir un trdelnik*|MSPrisonGuard.Trdelnik]]\n<<endif>>",
+		"body": "<<if not visited(\"MSPrisonGuard.Convince\")>>\nGarde : Et vous pensez que je laisserais passer n'importe qui ? Voyons, trouvez un argument convaincant pour votre cause.\n<<endif>>\nGarde : Je vous écoute.\n[[*Changer d'avis et faire demi-tour*|MSPrisonGuard.GoodBye]]\n[[*Montrer la lettre de Dalibor*|MSPrisonGuard.Letter]]\n<<if $MSBoughtATrdelnik is true>>\n[[*Offrir un trdelnik*|MSPrisonGuard.Trdelnik]]\n<<endif>>",
 		"position": {
 			"x": -445,
 			"y": -302
@@ -92,7 +92,7 @@
 	{
 		"title": "MSPrisonDoor",
 		"tags": "",
-		"body": "<<if not visited(\"MSPrisonGuard.Trdelnik\")>>\nLa porte de la prison est fermée et sous la surveillance d'un garde.\n<<else>>\nSe rendre à la prison ?\n->Non\n    <<stop>>\n->Oui\n    <<LoadScene DialogueRunner Prison>>\n<<endif>>",
+		"body": "<<if visited(\"MSPrisonGuard.Trdelnik\")>>\nLa porte de la prison est fermée et sous la surveillance d'un garde.\n<<else>>\nSe rendre à la prison ?\n->Non\n    <<stop>>\n->Oui\n    //<<LoadScene DialogueRunner Prison>>\n    <<MovePlayer DialogueRunner PDoor>>\n<<endif>>",
 		"position": {
 			"x": -1958,
 			"y": -422
@@ -182,17 +182,17 @@
 	{
 		"title": "MSRabbiDoor",
 		"tags": "",
-		"body": "L'addresse est au nom de Rabbi Judah Loew ben Bezalel.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit.\n->*Ouvrir la porte*\n    <<if $RHRabbiDoorUnlocked>>\n        La porte s'ouvre sans heurt.\n        <<LoadScene DialogueRunner RabbiHouse>>\n    <<else>>\n        La porte est fermée.\n    <<endif>>",
+		"body": "L'addresse est au nom de Rabbi Judah Loew ben Bezalel.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit ne se font entendre.\n->*Ouvrir la porte*\n    <<if $RHRabbiDoorUnlocked>>\n        La porte s'ouvre sans heurt.\n        //<<LoadScene DialogueRunner RabbiHouse>>\n        <<MovePlayer DialogueRunner RHDoor>>\n    <<else>>\n        La porte est fermée.\n    <<endif>>\n<<endif>>",
 		"position": {
-			"x": -2465,
-			"y": 216
+			"x": -2463,
+			"y": 214
 		},
 		"colorID": 0
 	},
 	{
 		"title": "MSHouse1Door",
 		"tags": "",
-		"body": "L'addresse est au nom de Jakub et Alžběta Novák.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.\n->*Ouvrir la porte*\n    La porte est fermée",
+		"body": "L'addresse est au nom de Jakub et Alžběta Novák.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.\n->*Ouvrir la porte*\n    La porte est fermée.\n<<endif>>",
 		"position": {
 			"x": -2490,
 			"y": -297
@@ -202,7 +202,7 @@
 	{
 		"title": "MSHouse2Door",
 		"tags": "",
-		"body": "L'addresse est au nom de Jolana et Ivo Svoboda.\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse\n->*Ouvrir la porte*\n    La porte est fermée",
+		"body": "L'addresse est au nom de Jolana et Ivo Svoboda.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Toquer\n    Aucune réponse.\n->*Ouvrir la porte*\n    La porte est fermée.\n<<endif>>",
 		"position": {
 			"x": -2245,
 			"y": -293
@@ -212,7 +212,7 @@
 	{
 		"title": "MSRabbiBackDoor",
 		"tags": "",
-		"body": "Il s'agit de la porte arrière d'une maison.\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit.\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner RabbiHouse>>",
+		"body": "Il s'agit de la porte arrière d'une maison.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->*Toquer*\n    Aucune réponse ni aucun bruit.\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    //<<LoadScene DialogueRunner RabbiHouse>>\n    <<MovePlayer DialogueRunner RHBackDoor>>\n<<endif>>",
 		"position": {
 			"x": -2213,
 			"y": 218
@@ -242,7 +242,7 @@
 	{
 		"title": "MSTownsMan1",
 		"tags": "",
-		"body": "Passant : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passant : De vous à moi, j'y crois que dalle à  ces histoires de Dalibor qu'est le coupable. C'est encore un coup de l'empire qui veut nous museler.\n    Passant : Moi je dis : vive le peuple tchèque !\n    Passant : . . . Que cela reste entre nous.\n->Incidents étranges ou remarquables ?\n    Passant : Ai entendu des hurlements la nuit, qui venaient de la forêt. J'aurais parié sur des loups mais on en a plus vu depuis bien trop longtemps.\n    Passant : Ces animaux n'aiment pas trop le bruit des grandes villes, vous savez.\n    Passant : Je ne les comprends que trop bien.",
+		"body": "Passant : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passant : De vous à moi, j'y crois que dalle à  ces histoires de Dalibor qu'est le coupable. C'est encore un coup de l'empire qui veut nous museler.\n    Passant : Moi je dis : vive le peuple tchèque !\n    Passant : . . . Que cela reste entre nous.\n->Incidents étranges ou remarquables ?\n    Passant : Ai entendu des hurlements la nuit, qui venaient de la forêt. J'aurais parié sur des loups mais on en a plus vu depuis bien trop longtemps.\n    Passant : Ces animaux n'aiment pas trop le bruit des grandes villes, vous savez.\n    Passant : Je ne les comprends que trop bien.\n<<endif>>",
 		"position": {
 			"x": -1976,
 			"y": 317

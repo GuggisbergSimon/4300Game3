@@ -22,7 +22,7 @@
 	{
 		"title": "RHBackDoor",
 		"tags": "",
-		"body": "Il s'agit de la porte arrière.\n->*Faire demi-tour*\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner MainStreet>>",
+		"body": "Il s'agit de la porte arrière.\n->*Faire demi-tour*\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    //<<LoadScene DialogueRunner MainStreet>>\n    <<MovePlayer DialogueRunner MSRabbiHouseBackDoor>>",
 		"position": {
 			"x": 83,
 			"y": 436
@@ -42,10 +42,10 @@
 	{
 		"title": "RHDoor.Open",
 		"tags": "",
-		"body": "<<if $RHRabbiDoorUnlocked>>\n    La porte s'ouvre sans heurt.\n    <<LoadScene DialogueRunner MainStreet>>\n<<else>>\n    La porte est fermée.\n<<endif>>",
+		"body": "<<if $RHRabbiDoorUnlocked>>\n    La porte s'ouvre sans heurt.\n    //<<LoadScene DialogueRunner MainStreet>>\n    <<MovePlayer DialogueRunner MSRabbiHouseDoor>>\n<<else>>\n    La porte est fermée.\n<<endif>>",
 		"position": {
 			"x": 634,
-			"y": 364
+			"y": 365
 		},
 		"colorID": 0
 	},
