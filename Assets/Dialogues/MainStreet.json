@@ -92,7 +92,7 @@
 	{
 		"title": "MSPrisonDoor",
 		"tags": "",
-		"body": "<<if visited(\"MSPrisonGuard.Trdelnik\")>>\nLa porte de la prison est fermée et sous la surveillance d'un garde.\n<<else>>\nSe rendre à la prison ?\n->Non\n    <<stop>>\n->Oui\n    //<<LoadScene DialogueRunner Prison>>\n    <<MovePlayer DialogueRunner PDoor>>\n<<endif>>",
+		"body": "<<if not visited(\"MSPrisonGuard.Trdelnik\")>>\nLa porte de la prison est fermée et sous la surveillance d'un garde.\n<<else>>\nSe rendre à la prison ?\n->Non\n    <<stop>>\n->Oui\n    //<<LoadScene DialogueRunner Prison>>\n    <<MovePlayer DialogueRunner PDoor>>\n<<endif>>",
 		"position": {
 			"x": -1958,
 			"y": -422
@@ -240,7 +240,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "MSTownsMan1",
+		"title": "MSTownsman1",
 		"tags": "",
 		"body": "Passant : Bonjour.\n<<if $PIsInvestigating>>\n->*Faire demi-tour*\n->Nuit du 1er Mai?\n    Passant : De vous à moi, j'y crois que dalle à  ces histoires de Dalibor qu'est le coupable. C'est encore un coup de l'empire qui veut nous museler.\n    Passant : Moi je dis : vive le peuple tchèque !\n    Passant : . . . Que cela reste entre nous.\n->Incidents étranges ou remarquables ?\n    Passant : Ai entendu des hurlements la nuit, qui venaient de la forêt. J'aurais parié sur des loups mais on en a plus vu depuis bien trop longtemps.\n    Passant : Ces animaux n'aiment pas trop le bruit des grandes villes, vous savez.\n    Passant : Je ne les comprends que trop bien.\n<<endif>>",
 		"position": {

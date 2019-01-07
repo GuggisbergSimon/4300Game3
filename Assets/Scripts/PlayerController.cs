@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
 	private List<GameObject> interactives = new List<GameObject>();
 	private float horizontalInput;
 	private float verticalInput;
-
+	private Animator animator;
+	
 	public enum PlayerState
 	{
 		Idle,
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 	{
 		groundDetectorTrigger = groundDetector.GetComponent<TriggerDetector>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
+		animator = GetComponentInChildren<Animator>();
 	}
 
 	private void FixedUpdate()
@@ -138,6 +140,7 @@ public class PlayerController : MonoBehaviour
 			{
 				//updates horizontal input
 				horizontalInput = Input.GetAxis("Horizontal");
+				animator.SetFloat("speed", Mathf.Abs(horizontalInput));
 
 				//code for checking jump input
 				if (Input.GetButtonDown("Jump") && !isAirborne)
