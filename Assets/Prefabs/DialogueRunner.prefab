@@ -47,14 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceText:
-  - {fileID: 4900000, guid: 88a112bebebf4be428fbba61b65631b1, type: 3}
+  - {fileID: 4900000, guid: 2dddb9e6dfeb360438cff9e8163d9bed, type: 3}
+  - {fileID: 4900000, guid: 7b01ff4fbace6404b8eabd762162cf3d, type: 3}
+  - {fileID: 4900000, guid: 310efc4a49c47cb4ab6ac98c995e2f00, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10
   variableStorage: {fileID: 8359596016566000122}
   dialogueUI: {fileID: 8359596016566000125}
-  startNode: 
-  startAutomatically: 0
+  startNode: MSIntroduction
+  startAutomatically: 1
 --- !u!114 &8359596016566000125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +75,7 @@ MonoBehaviour:
   continuePrompt: {fileID: 0}
   textSpeed: 0.025
   optionButtons:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
