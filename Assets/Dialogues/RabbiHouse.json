@@ -1,0 +1,252 @@
+[
+	{
+		"title": "RHNotes",
+		"tags": "",
+		"body": "Il s'agit d'un journal en piteux état. Il manque plusieurs pages. On peut y lire plusieurs entrées.\n[[RHNotes.1]]",
+		"position": {
+			"x": -392,
+			"y": -78
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor",
+		"tags": "",
+		"body": "Il s'agit de la porte principale de la maison\n[[*Faire demi-tour*|RHDoor.Cancel]]\n<<if $RHRabbiDoorUnlocked is false>>\n[[*Enlever le verrou*|RHDoor.Unlock]]\n<<else>>\n[[*Remettre le verrou*|RHDoor.Lock]]\n<<endif>>\n[[*Ouvrir la porte*|RHDoor.Open]]",
+		"position": {
+			"x": 368,
+			"y": 354
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHBackDoor",
+		"tags": "",
+		"body": "Il s'agit de la porte arrière.\n->*Faire demi-tour*\n->*Ouvrir la porte*\n    La porte s'ouvre sans heurt.\n    //<<LoadScene DialogueRunner MainStreet>>\n    <<MovePlayer DialogueRunner MSRabbiHouseBackDoor>>",
+		"position": {
+			"x": 83,
+			"y": 436
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Cancel",
+		"tags": "",
+		"body": "",
+		"position": {
+			"x": 626,
+			"y": 616
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Open",
+		"tags": "",
+		"body": "<<if $RHRabbiDoorUnlocked>>\n    La porte s'ouvre sans heurt.\n    //<<LoadScene DialogueRunner MainStreet>>\n    <<MovePlayer DialogueRunner MSRabbiHouseDoor>>\n<<else>>\n    La porte est fermée.\n<<endif>>",
+		"position": {
+			"x": 634,
+			"y": 365
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Lock",
+		"tags": "",
+		"body": "Un clic distinct se fait entendre.\n<<set $RHRabbiDoorUnlocked to false>>",
+		"position": {
+			"x": 631,
+			"y": 78
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHDoor.Unlock",
+		"tags": "",
+		"body": "Un clic rassurant se fait entendre.\n<<set $RHRabbiDoorUnlocked to true>>",
+		"position": {
+			"x": 368,
+			"y": 78
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNoteAlone",
+		"tags": "",
+		"body": "Il s'agit d'une feuille vraisemblablement arrachée d'un journal comportant plusieurs entrées.\n2 mars 1874\nJ'ai caché le reste de mes notes et manuscripts. Je ne sais pas ce que Josef serait capable de comprendre.\nC'est pour le mieux.",
+		"position": {
+			"x": -695,
+			"y": -82
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNotes.2",
+		"tags": "",
+		"body": "->[Premières entrées]\n    [[RHNotes.1]]\n->25 février 1874\n    La créature est bien plus surprenante que prévu, elle apprend vite, et nous avons pu parvenir à communiquer par écrit, mais elle dispose encore d'une mentalité enfantine.\n    Je décide de l'appeler Josef après mûre réflexion. Le nom Petr aurait été une pique de bien trop mauvais goût.\n    [[RHNotes.2]]\n->16 mars 1874\n    Je le savais, mais il me faut faire mes adieux à Josef. Je ne souhaite pas courir de risques en le laissant réveiller durant les jours de sabbats du calendrier de la Roue de l'année.\n    Nul ne sait s'il sera capable de garder le contrôle de sa rationalité.\n    Quelle malédiction tout de même, être condamné à un cycle de vie de deux mois.\n    [[RHNotes.2]]\n->24 mars\n    La présence de Josef est une bénédiction. Lorsqu'il n'erre pas dans les rues à l'affut de violences, il prend soin de ma vieillesse.\n    Il faudrait que je l'envoie me chercher un médecin, chose qui a dû attendre le résultat de ces expériences.\n    [[RHNotes.2]]",
+		"position": {
+			"x": -700,
+			"y": 200
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHNotes.1",
+		"tags": "",
+		"body": "->*Faire demi-tour*\n    <<EnableSprite Golem true>>\n    [[RHGolem]]\n->4 février 1874\n    Malgré un état maladif constant depuis le début de l'hiver j'ai décidé de finaliser ce projet. Les pogroms se font souvent par vague et je pressens l'une d'entre elles se profiler.\n    Cela se lit dans les yeux des gens. Je ne peux laisser mes semblables sans défense.\n    [[RHNotes.1]]\n->11 février 1874\n    L'argile a pris vie.\n    [[RHNotes.1]]\n->[Dernières entrées]\n    [[RHNotes.2]]",
+		"position": {
+			"x": -388,
+			"y": 206
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem",
+		"tags": "",
+		"body": "Citadin : ...\n[[Oh vous m'avez surpris !|RHGolem.Dumb]]\n[[Comment êtes vous rentrés ici, voleur ?|RHGolem.Dumb]]\n<<if $MSMetGolem>>\n    [[Vous, vous êtes le muet, non ?|RHGolem.RememberedFirstMeeting]]\n<<endif>>",
+		"position": {
+			"x": -378,
+			"y": 522
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Dumb",
+		"tags": "",
+		"body": "L'homme tend son carnet sur lequel il est écrit :\n(Je suis muet.)\n[[RHGolem.Question1]]",
+		"position": {
+			"x": -522,
+			"y": 793
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.RememberedFirstMeeting",
+		"tags": "",
+		"body": "L'homme tend son carnet sur lequel il est écrit :\n(Merci de vous en être rappelé.)\n[[RHGolem.Question1]]",
+		"position": {
+			"x": -225,
+			"y": 788
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question1",
+		"tags": "",
+		"body": "(Je vous suis depuis que vous êtes arrivés en ville, ne vous énervez pas, les explications ne sauront tarder, et je souhaitais vous demander quelque chose.)\n(Vous enquêtez sur ce meurtre qui s'est produit le il y a un mois, le 1er mai, c'est cela ?)\n[[Non|RHGolem.Failure]]\n[[Oui|RHGolem.Question1Yes]]",
+		"position": {
+			"x": -379,
+			"y": 1052
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Failure",
+		"tags": "",
+		"body": "(Me serais-je trompé de personne ?)\n(Navré de vous avoir importuné, je vous demanderai donc de quiter mon logis.)\n[[RHGolem.BadEnd]]",
+		"position": {
+			"x": 406,
+			"y": 1371
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question1Yes",
+		"tags": "",
+		"body": "(Et vos recherches vous ont menées ici, n'est-ce pas ?)\n...\n(Savez-vous comment je m'appelle ?)\n[[RHGolem.Question2.1]]",
+		"position": {
+			"x": -206,
+			"y": 1327
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question2Correct",
+		"tags": "",
+		"body": "(C'est vrai.)\n(Alors dans ce cas, vous avez dû comprendre ma nature.)\n(Quelle est-elle ?)\n->Domestique\n->Golem\n    [[RHGolem.Question3Correct]]\n->Lycanthrope\n->Muet\n[[RHGolem.Failure]]",
+		"position": {
+			"x": -330,
+			"y": 1930
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question2Incorrect",
+		"tags": "",
+		"body": "(Non, ce n'est pas le nom que l'on m'a attribué.)\n[[RHGolem.Failure]]",
+		"position": {
+			"x": -30,
+			"y": 1947
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question2.1",
+		"tags": "",
+		"body": "->Dalibor de Kozojed\n->Nikola\n->Jan\n->[Choix suivants]\n    [[RHGolem.Question2.2]]\n[[RHGolem.Question2Incorrect]]",
+		"position": {
+			"x": -27,
+			"y": 1600
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question2.2",
+		"tags": "",
+		"body": "->[Choix précédents]\n    [[RHGolem.Question2.1]]\n->Josef\n    [[RHGolem.Question2Correct]]\n->Judah Loew ben Bezalel\n->Petr\n[[RHGolem.Question2Incorrect]]",
+		"position": {
+			"x": -330,
+			"y": 1601
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question3Correct",
+		"tags": "",
+		"body": "Josef : ...\n(C'est vrai.)\n(Et savez-vous quelle est la cause du crime produit le 1er mai ? Révélez moi la vérité)\n->Alcoolisme\n->Nationalisme tchèque\n->Pogroms\n->Sabbats de la Roue de l'année\n    [[RHGolem.Question4Correct]]\n[[RHGolem.SoftFailure]]",
+		"position": {
+			"x": -331,
+			"y": 2203
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.Question4Correct",
+		"tags": "",
+		"body": "(Et qu'est-ce donc que cela ?)\n->*Ne pas lui expliquer*\n    [[RHGolem.SoftFailure]]\n->*Lui montrer les notes*\n    (Oh, je comprends.)\n    (Le crime du 1er mai serait donc dû à une crise que j'ai eu lors de cette période ? Et que ce genre de crises sont condamnées à revenir par deux mois d'intervalles ?)\n    Josef : ...\n    (Laissez moi régler cette situation je vous prie. Loew n'a jamais souhaité que cette situation se présente.)\n    Josef quitte la maison sans bruit.\n    [[RHConclusion]]",
+		"position": {
+			"x": 58,
+			"y": 2441
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.SoftFailure",
+		"tags": "",
+		"body": "(Ainsi soit-il.)\n(Cette affaire n'ayant aucun rapport avec moi et le fait que vous connaissez ma nature font que je vais vous laisser.)\n(Vous n'entendrez plus jamais parlez de moi.)\n(Adieu.)\n[[RHGolem.BadEnd]]",
+		"position": {
+			"x": 436,
+			"y": 2206
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHConclusion",
+		"tags": "",
+		"body": "<<FadeToBlack DialogueRunner true>>\n...\nUn homme se présente plus tard aux portes de la prison. Sur le carnet qu'il tend au garde il est inscrit :\n\"Je suis coupable du meurtre du 1er mai.\"\n...\nDalibor est relâché quelques jours plus tard.\nMême si son séjour en prison ternira certainement sa carrière, il est à nouveau libre, et, plus important, vivant.\n...\nUn matin en prison, un gardien fait son tour des cellules routiniers.\nEn arrivant devant celle de Josef, il doit y regarder à deux fois avant d'en croire ses yeux.\nSur les dalles de la cellule ne restent plus que morceaux d'argile ressemblant vaguement à des membres humains ainsi qu'une feuille de papier, s'envolant au vent.\nUne légende s'éteint.\n<<LoadScene DialogueRunner Void>>",
+		"position": {
+			"x": 724,
+			"y": 2441
+		},
+		"colorID": 0
+	},
+	{
+		"title": "RHGolem.BadEnd",
+		"tags": "",
+		"body": "<<FadeToBlack DialogueRunner true>>\n...\nN'ayant pu prouver l'innocence de Dalibor, Nikola erre de longues heures dans les rues de Prague.\n...\nLes jours passent, la date de l'exécution de Dalibor se rapprochent.\n...\nDalibor meurt.\n...\nUn nouveau crime tout aussi sanglant que celui du 1er mai est commis dans une autre partie de la ville, mais aucun coupable n'est identifié. on parle du monstre de Prague, du fantôme de Dalibor. Les rumeurs les plus folles se mettent à circuler.\nUne légende est née.\n<<LoadScene DialogueRunner Void>>",
+		"position": {
+			"x": 713,
+			"y": 1712
+		},
+		"colorID": 0
+	}
+]

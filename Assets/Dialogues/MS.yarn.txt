@@ -1,0 +1,378 @@
+title: MSGuide
+tags: 
+colorID: 0
+position: -1250,-13
+---
+Citadin : Bonjour, je peux vous aider ?
+    [[Non|MSGuide.GoodBye]]
+<<if not visited("MSPrisonGuard")>>
+    [[Où se trouve la prison ?|MSGuide.PrisonTip]]
+<<elseif not visited("MSPrisonGuard.Trdelnik")>>
+    [[Comment convaincre le garde de la prison ?|MSGuide.GuardTip]]
+<<endif>>
+<<if $PIsInvestigating>>
+    [[Nuit du 1er mai ?|MSGuide.1Mai]]
+    [[Incidents étranges ou remarquables ?|MSGuide.Incidents]]
+<<endif>>
+===
+title: MSPrisonGuard
+tags: 
+colorID: 0
+position: -304,-590
+---
+<<if not visited("MSPrisonGuard.Convince")>>
+    Garde : Halte, quel est la raison de votre passage à la prison ?
+    [[*Faire demi-tour*|MSPrisonGuard.GoodBye]]
+    [[Je souhaite voir Dalibor.|MSPrisonGuard.Convince]]
+<<else>>
+    <<if not visited("MSPrisonGuard.Trdelnik")>>
+        Garde : Alors, vous avez réfléchi à un argument convaincant ?
+        [[*Faire demi-tour*|MSPrisonGuard.GoodBye]]
+        [[Oui|MSPrisonGuard.Convince]]
+    <<else>>
+        Garde : Qu'est-ce qu'il y a ? J'ai quelque chose sur ma figure ?
+        [[MSPrisonGuard.GoodBye]]
+    <<endif>>
+<<endif>>
+===
+title: MSBaker
+tags: 
+colorID: 0
+position: -954,-535
+---
+Il s'agit d'une boulangerie. On y vend plusieurs types de pâtisserie.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->Nuit du 1er Mai?
+    Boulanger : Ouh ça date un peu, c'était la nuit du meurtre près de la rive ? Comme dit aux enquêteurs, en préparant le pain, j'ai entendu un éclat de voix rapidement étouffé.
+    Boulanger : Je n'y ai pas prêté davantages d'attention. Et depuis, pas un jour ne passe sans que j'imagine des nouveaux éclats à travers la brume du matin.
+    Boulanger : ...
+->Incidents étranges ou remarquables ?
+    Boulanger : Un jeune homme a pêché un poisson en argent. Vous pouvez imaginez ça ? Moi non plus.
+->Regarder les pâtisseries disponibles.
+    [[MSBaker.1]]
+<<else>>
+[[MSBaker.1]]
+<<endif>>
+===
+title: MSPrisonGuard.Convince
+tags: 
+colorID: 0
+position: -445,-302
+---
+<<if not visited("MSPrisonGuard.Convince")>>
+Garde : Et vous pensez que je laisserais passer n'importe qui ? Voyons, trouvez un argument convaincant pour votre cause.
+<<endif>>
+Garde : Je vous écoute.
+[[*Changer d'avis et faire demi-tour*|MSPrisonGuard.GoodBye]]
+[[*Montrer la lettre de Dalibor*|MSPrisonGuard.Letter]]
+<<if $MSBoughtATrdelnik is true>>
+[[*Offrir un trdelnik*|MSPrisonGuard.Trdelnik]]
+<<endif>>
+===
+title: MSPrisonGuard.GoodBye
+tags: 
+colorID: 0
+position: -162,-297
+---
+<<if not visited("MSPrisonGuard.Convince")>>
+Garde : Bonne journée ?
+<<else>>
+Garde : Bon vent !
+<<endif>>
+===
+title: MSPrisonGuard.Letter
+tags: 
+colorID: 0
+position: -313,-3
+---
+Garde : Il semblerait que vous soyez bien l'ami de ce Dalibor. Et ça change quoi ? Restez pas dans mes pattes.
+[[MSPrisonGuard.GoodBye]]
+===
+title: MSPrisonGuard.Trdelnik
+tags: 
+colorID: 0
+position: -578,-5
+---
+Garde : Oh.
+Garde : Si vous me prenez par les sentiments...
+Garde : ...
+Garde : Passez donc avant que je ne change d'avis.
+===
+title: MSBaker.2
+tags: 
+colorID: 0
+position: -1106,-257
+---
+->[Choix précédents]
+    [[MSBaker.1]]
+->Acheter un Trdelnik
+    <<set $MSBoughtATrdelnik to true>>
+->Acheter un Marlenka
+->Acheter un Makový kolácek
+===
+title: MSBaker.1
+tags: 
+colorID: 0
+position: -798,-262
+---
+->*Revenir sur ses pas*
+->*Acheter un Strudl*
+->*Acheter un Medovnik*
+->[Autres Choix]
+    [[MSBaker.2]]
+===
+title: MSPrisonDoor
+tags: 
+colorID: 0
+position: -1958,-422
+---
+<<if not visited("MSPrisonGuard.Trdelnik")>>
+La porte de la prison est fermée et sous la surveillance d'un garde.
+<<else>>
+Se rendre à la prison ?
+->Non
+    <<stop>>
+->Oui
+    //<<LoadScene DialogueRunner Prison>>
+    <<MovePlayer DialogueRunner PDoor>>
+<<endif>>
+===
+title: MSGolem
+tags: 
+colorID: 0
+position: -1648,-428
+---
+<<if $MSMetGolem is false>>
+Passant : ...
+->*Faire demi-tour*
+->Bonjour
+    Passant : ...
+    ->*Faire demi-tour*
+    ->Il fait beau temps pour la saison, vous ne trouvez pas ?
+        Passant : ...
+        ->*Faire demi-tour*
+        ->Je dirais même que le fond de l'air est frais.
+            ->*Faire demi-tour*
+            ->Laïho, laïho...
+                Passant : ...
+                ->*Faire demi-tour*
+                ->On vous a déjà dit que vous n'étiez pas le genre de type bavard ?
+                    Passant : ...
+                    ->*Faire demi-tour*
+                    ->Oui je pensais exactement la même chose.
+                        Passant : ...
+                        ->*Faire demi-tour*
+                        ->Qui est-ce qui peut bien vouloir passer du temps à entretenir une discussion unilatérale ?
+                            *Le passant tend un carnet sur lesquels il est écrit : "Je suis muet.*
+                            Passant : ...
+                            <<set $MSMetGolem to true>>
+                            ->*Faire demi-tour*
+                            ->...
+<<else>>
+Je ferais mieux de ne pas le déranger, je me suis déjà bien ridiculisé.
+<<endif>>
+===
+title: MSCrimeScene
+tags: 
+colorID: 0
+position: -1664,-21
+---
+Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.
+<<if $PIsInvestigating>>
+C'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.
+->*Faire demi-tour*
+->*Rechercher les environs*
+    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.
+    Il s'agit d'un endroit assez tranquille où l'on aurait aucune peine à passer la nuit. Ou commettre un crime.
+    Il faut chercher des indices ailleurs, mais où ?
+<<endif>>
+===
+title: MSGuide.PrisonTip
+tags: 
+colorID: 0
+position: -1243,295
+---
+Citadin : Vous ne pouvez pas la louper, continuez tout droit, traversez le pont et vous y êtes.
+===
+title: MSGuide.GuardTip
+tags: 
+colorID: 0
+position: -988,297
+---
+Citadin : Le garde, vous parlez de Jan ? Je ne le pense pas capable de résister à un trdelník.
+->Merci pour l'information.
+    Citadin : Il n'y a pas de quoi.
+->Trd... quoi ?
+    Citadin : Trdelník, c'est une variété de gâteau à la broche. Vous devriez en trouvez à la boulangerie juste avant le pont.
+===
+title: MSGuide.GoodBye
+tags: 
+colorID: 0
+position: -748,299
+---
+Citadin : Si vous avez besoin d'aide, n'hésitez pas à me rendre visite.
+===
+title: MSGuide.1Mai
+tags: 
+colorID: 0
+position: -1498,295
+---
+Citadin : Ah il y a eu ce meurtre le 1er mai, une sauvagerie totale. Encore heureux que justice soit faite et que le meurtrier soit sous les barreaux !
+Nikola : ...
+===
+title: MSTownswoman1
+tags: 
+colorID: 0
+position: -1976,-121
+---
+Passante : Bonjour.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->Nuit du 1er Mai?
+    Passante : Vous ne connaissez pas l'histoire ? On a eu un meurtre lors de cette nuit !
+    Passante : J'ai été tant choquée en découvrant le corps sans vie de...comment s'appelait-il déjà ce clochard ? Qu'importe.
+    Passante : Je disais donc : j'ai été tant choquée en découvrant ce corps sans de vie, au milieu d'une mare de sang et à côté du corps, le meurtrier qui dort !
+    Passante : Dalibor de Kozojed !
+    Passante : Je me suis empressée de contacter les gardes qui ont eu la situation en main en moins de deux.
+    Passante : Je savais qu'il ne fallait pas faire confiance à ce nationaliste de Dalibor.
+    ->*Faire demi tour*
+    ->Auriez vous plus de détails à me raconter ?
+        Passante : Non, je ne souhaitais pour rien au monde rester un moment de plus près d'un homme aussi dangereux.
+->Incidents étranges ou remarquables ?
+    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison proche du pont ?
+    Passante : Cette maison est abandonnée depuis plusieurs semaines déjà, mais je suis convaincu que des clochards ou gens louchent y séjournent.
+    Passante : Vous pensez que je radote c'est ça ? Je n'ai tout de même pas imaginé les bruits qui en sortent, si ?
+    Nikola : ...
+<<endif>>
+===
+title: MSGuide.Incidents
+tags: 
+colorID: 0
+position: -1757,300
+---
+Citadin : Pas étrange, mais remarquable. Le Rabbi Judah Loew ben Bezalel est mort il y a deux mois.
+Citadin : La tuberculose est définitivement une triste maladie. Loew manque à beaucoup dans ce quartier.
+===
+title: MSRabbiDoor
+tags: 
+colorID: 0
+position: -2463,214
+---
+L'addresse est au nom de Rabbi Judah Loew ben Bezalel.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->*Toquer*
+    Aucune réponse ni aucun bruit ne se font entendre.
+->*Ouvrir la porte*
+    <<if $RHRabbiDoorUnlocked>>
+        La porte s'ouvre sans heurt.
+        //<<LoadScene DialogueRunner RabbiHouse>>
+        <<MovePlayer DialogueRunner RHDoor>>
+    <<else>>
+        La porte est fermée.
+    <<endif>>
+<<endif>>
+===
+title: MSHouse1Door
+tags: 
+colorID: 0
+position: -2490,-297
+---
+L'addresse est au nom de Jakub et Alzbeta Novák.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->*Toquer*
+    Aucune réponse, mais l'on entend des pleurs d'enfants au travers de la porte.
+->*Ouvrir la porte*
+    La porte est fermée.
+<<endif>>
+===
+title: MSHouse2Door
+tags: 
+colorID: 0
+position: -2245,-293
+---
+L'addresse est au nom de Jolana et Ivo Svoboda.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->Toquer
+    Aucune réponse.
+->*Ouvrir la porte*
+    La porte est fermée.
+<<endif>>
+===
+title: MSRabbiBackDoor
+tags: 
+colorID: 0
+position: -2213,218
+---
+Il s'agit de la porte arrière d'une maison.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->*Toquer*
+    Aucune réponse ni aucun bruit.
+->*Ouvrir la porte*
+    La porte s'ouvre sans heurt.
+    //<<LoadScene DialogueRunner RabbiHouse>>
+    <<MovePlayer DialogueRunner RHBackDoor>>
+<<endif>>
+===
+title: MSIntroduction
+tags: 
+colorID: 0
+position: -1396,-427
+---
+//<<FadeToBlack DialogueRunner true>>
+Lettre reçue le 20 mai 1874.
+"Cher Nikola, ces nouvelles que tu reçois de ma part ne sont pas des plus joyeuses."
+"À vrai dire je te conseillerais même de te verser un verre d'alcool avant de continuer cette lettre."
+"Je t'écris depuis la prison de Pragues, après avoir été arrêté pour un meurtre que je n'ai pas commis."
+"Certaines personnes souhaitent faire taire les voix nationalistes et il se trouve que je suis le bouc émissaire parfait."
+"Si tu parviendrais à rétablir la vérité en ma place, je te serai éternellement reconnaissant."
+"Je t'attends aux geôles de Pragues, ton ami Dalibor de Kozojed"
+...
+<<FadeToBlack DialogueRunner false>>
+Le voyage jusqu'à Pragues s'est passé sans encombre. Il est maintenant le premier du mois de juin.
+===
+title: MSTownswoman2
+tags: 
+colorID: 0
+position: -1973,105
+---
+Passante : Bonjour.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->Nuit du 1er Mai?
+    Passante : Ah c'est la nuit où l'on a eu un meurtre près de la Moldau ? Quelle triste histoire.
+    Passante : Ils ont trouvé le meurtrier j'espère.
+    ->Pas encore.
+        Passante : Ah c'est donc cela que vous faites, vous enquêtez ? Très malin de le faire en civil, personne ne vous suspectera.
+        Passante : .  .  .
+        Passante : Oh, ne vous en faites pas, votre secret est bien gardé.
+    ->Il est sous les barreaux.
+        Passante : Voilà qui me rassure.
+->Incidents étranges ou remarquables ?
+    Passante : Un chien près des portes de la ville aurait attrapé la rage.
+    Passante : Si vous voyez une bête sauvage dans les rues, méfiez-vous en !
+    Passante : Ce n'est qu'une question de temps avant que la folle bête ne meure.
+<<endif>>
+===
+title: MSTownswoman3
+tags: 
+colorID: 0
+position: -1976,317
+---
+Citadine : Bonjour.
+<<if $PIsInvestigating>>
+->*Faire demi-tour*
+->Nuit du 1er Mai?
+    Citadine : De vous à moi, je n'y crois pas à ces histoires de Dalibor qui serait le coupable. C'est encore un coup de l'empire qui veut nous museler.
+    Citadine : Moi je dis : vive le peuple tchèque !
+    Citadine : . . . Que cela reste entre nous.
+->Incidents étranges ou remarquables ?
+    Citadine : Ai entendu des hurlements la nuit, qui venaient de la forêt. J'aurais parié sur des loups mais on en a plus vu depuis bien trop longtemps.
+    Citadine : Ces animaux n'aiment pas trop le bruit des grandes villes, vous savez...
+    Citadine : Je ne les comprends que trop bien.
+<<endif>>
+===

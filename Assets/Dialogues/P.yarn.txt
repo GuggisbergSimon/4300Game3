@@ -1,0 +1,37 @@
+title: PDalibor
+tags: 
+colorID: 0
+position: 548,104
+---
+<<if not $PIsInvestigating>>
+Dalibor de Kozojed affiche un air lugubre. Il regarde quelques particules de poussières traverser un rais de lumière. Son visage se transforme un voyant un visiteur arriver.
+Dalibor : !
+Dalibor : Je ne t'avais pas reconnu dans cette obscurité, tu as bien reçu ma lettre Nikola ? Fait bon voyage ?
+Dalibor : ...Ce n'est pas vraiment par là qu'il faudrait commencer...Tu veux que je t'explique comment je me suis retrouvé dans cette position ?
+Dalibor : C'était le premier mai. J'avais festoyé avec quelques amis et je devais certainement être trop soûl pour retrouver le chemin jusqu'à mon foyer. Autant dormir à la belle étoile, me suis-je dit.
+Dalibor : Et dormir je l'ai fait. Si bien dormi que je n'ai été réveillé que par les braves gens de la police. Ils n'ont cessé de me presser de questions concernant un meurtre.
+Dalibor : C'est à ce moment-là que j'ai remarqué le cadavre, à côté de l'endroit où je roupillais, un couteau ensanglanté achevait le tableau.
+Dalibor : Sans avoir eu de chances de m'expliquer, on m'a jeté en prison, me mettant le crime sur le dos. Être nationaliste n'est pas trop bien vu par les officiels.
+Dalibor : haha
+Dalibor : Tu es donc venu pour enquêter à ma place et tenter de me sauver la peau ? Bonne chance.
+Dalibor : Je commencerais par chercher vers la rive de la Moldau, si par hasard la police a oublié de fouiller un recoin c'est la meilleure idée.
+Dalibor : Sinon, il faudra certainement demandez aux passants et habitants ce qu'ils ont pu voir lors de cette nuit où si ils ont remarqueé des faits étranges.
+Dalibor : Encore bonne chance, je ne bouge pas d'ici.
+Dalibor : haha
+<<set $PIsInvestigating to true>>
+<<else>>
+Dalibor : Encore bonne chance, je ne bouge pas d'ici.
+Dalibor : haha
+<<endif>>
+===
+title: PDoor
+tags: 
+colorID: 0
+position: 282,103
+---
+Quitter la prison ?
+->Non
+->Oui
+    //<<LoadScene DialogueRunner MainStreet>>
+    <<MovePlayer DialogueRunner MSPrisonDoor>>
+===

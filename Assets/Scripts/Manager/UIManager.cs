@@ -2,55 +2,33 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
 {
-	[SerializeField] private GameObject dialoguePanel;
-	[SerializeField] private TextMeshProUGUI dialogueText;
-	private bool isPrinting = false;
-	public bool IsPrinting => isPrinting;
-	private IEnumerator displayCoroutine;
-	
-	public void DisplayDialogue(Text text)
-	{
-		dialogueText.text = "";
-		dialogueText.color = text.colorText;
-		dialoguePanel.SetActive(true);
+	[SerializeField] private DialogueRunner dialogueRunner;
+	public DialogueRunner DialogueRunner => dialogueRunner;
 
-		if (text.timeBetweenLetters.CompareTo(0) != 0)
+	public void Setup()
+	{
+		dialogueRunner = FindObjectOfType<DialogueRunner>();
+	}
+
+	public bool isDialogueRunning()
+	{
+		if (dialogueRunner != null)
 		{
-			displayCoroutine = DisplayLetterByLetter(text.text, text.timeBetweenLetters);
-			StartCoroutine(displayCoroutine);
+			return dialogueRunner.isDialogueRunning;
 		}
 		else
 		{
-			dialogueText.text = text.text;
+			return false;
 		}
 	}
 
-	public void CloseDialogue()
-	{
-		dialoguePanel.SetActive(false);
-	}
-	
-	public void DisplayAllText(string text)
-	{
-		
-		StopCoroutine(displayCoroutine);
-		dialogueText.text = "";
-		dialogueText.text = text;
-		isPrinting = false;
-	}
 
-	private IEnumerator DisplayLetterByLetter(string text, float time)
+	private void Awake()
 	{
-		isPrinting = true;
-		foreach (var character in text)
-		{
-			dialogueText.text += character;
-			yield return new WaitForSeconds(time);
-		}
-
-		isPrinting = false;
+		Setup();
 	}
 }
