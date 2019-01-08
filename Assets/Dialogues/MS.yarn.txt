@@ -328,7 +328,7 @@ Lettre reçue le 20 mai 1874.
 "À vrai dire je te conseillerais même de te verser un verre d'alcool avant de continuer cette lettre."
 "Je t'écris depuis la prison de Pragues, après avoir été arrêté pour un meurtre que je n'ai pas commis."
 "Certaines personnes souhaitent faire taire les voix nationalistes et il se trouve que je suis le bouc émissaire parfait."
-"Si tu parviendrais à rétablir la vérité en ma place, je te serai éternellement reconnaissant."
+"Si tu parvenait à rétablir la vérité à ma place, je te serai éternellement reconnaissant."
 "Je t'attends aux geôles de Pragues, ton ami Dalibor de Kozojed"
 ...
 <<FadeToBlack DialogueRunner false>>
