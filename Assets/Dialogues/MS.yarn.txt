@@ -240,10 +240,9 @@ Passante : Bonjour.
     ->Auriez vous plus de détails à me raconter ?
         Passante : Non, je ne souhaitais pour rien au monde rester un moment de plus près d'un homme aussi dangereux.
 ->Incidents étranges ou remarquables ?
-    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison proche du pont ?
+    Passante : Laissez moi me plaindre deux secondes. vous voyez cette maison brune proche de l'église ?
     Passante : Cette maison est abandonnée depuis plusieurs semaines déjà, mais je suis convaincu que des clochards ou gens louchent y séjournent.
     Passante : Vous pensez que je radote c'est ça ? Je n'ai tout de même pas imaginé les bruits qui en sortent, si ?
-    Nikola : ...
 <<endif>>
 ===
 title: MSGuide.Incidents
@@ -361,7 +360,7 @@ Passante : Bonjour.
 title: MSTownswoman3
 tags: 
 colorID: 0
-position: -1976,317
+position: -1976,314
 ---
 Citadine : Bonjour.
 <<if $PIsInvestigating>>
