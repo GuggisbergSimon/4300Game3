@@ -56,7 +56,7 @@ MonoBehaviour:
   variableStorage: {fileID: 8359596016566000122}
   dialogueUI: {fileID: 8359596016566000125}
   startNode: MSIntroduction
-  startAutomatically: 1
+  startAutomatically: 0
 --- !u!114 &8359596016566000125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,8 @@ AudioSource:
   m_GameObject: {fileID: 8359596016566000126}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243144898962788450, guid: a507b5379eaf84641b937642d437684d,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.3

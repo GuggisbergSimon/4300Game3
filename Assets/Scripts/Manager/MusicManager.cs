@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-	[SerializeField] private AudioClip intro;
-	[SerializeField] private AudioClip loop;
-	[SerializeField] private AudioClip outro;
-	private AudioSource myAudioSource;
-
+	[SerializeField] private AudioClip intro=null;
+	[SerializeField] private AudioClip loop=null;
+	[SerializeField] private AudioClip outro=null;
+	private AudioSource myAudioSourceIntro;
+	private AudioSource myAudioSourceLoop;
+	
 	private void Start()
 	{
-		myAudioSource = GetComponent<AudioSource>();
+		var audioSources = GetComponents<AudioSource>();
+		myAudioSourceLoop = audioSources[0];
+		myAudioSourceIntro = audioSources[1];
 		ChangeAudioClipNoLoop(intro);
 		StartCoroutine(ChangeAudioClipWithLoop(loop));
 	}
 
 	private void ChangeAudioClipNoLoop(AudioClip clip)
 	{
-		myAudioSource.clip = clip;
-		myAudioSource.Play();
-		myAudioSource.loop = false;
+		myAudioSourceIntro.clip = clip;
+		myAudioSourceIntro.Play();
+		myAudioSourceIntro.loop = false;
 	}
 
 	public void PlayOutro()
@@ -30,8 +33,9 @@ public class MusicManager : MonoBehaviour
 	
 	private IEnumerator ChangeAudioClipWithLoop(AudioClip clip)
 	{
-		yield return new WaitForSeconds(myAudioSource.clip.length);
-		ChangeAudioClipNoLoop(clip);
-		myAudioSource.loop = true;
+		yield return new WaitForSeconds(myAudioSourceIntro.clip.length);
+		myAudioSourceLoop.clip = clip;
+		myAudioSourceLoop.Play();
+		myAudioSourceLoop.loop = true;
 	}
 }

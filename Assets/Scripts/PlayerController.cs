@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
 	private List<GameObject> interactives = new List<GameObject>();
 	private float horizontalInput;
 	private float verticalInput;
-
+	private Animator animator;
+	
 	public enum PlayerState
 	{
 		Idle,
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 	{
 		groundDetectorTrigger = groundDetector.GetComponent<TriggerDetector>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
+		animator = GetComponentInChildren<Animator>();
 	}
 
 	private void FixedUpdate()
@@ -108,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if (GameManager.Instance.MyUiManager.DialogueRunner.isDialogueRunning == true)
+		if (GameManager.Instance.MyUiManager.isDialogueRunning() == true)
 		{
 			myRigidbody2D.velocity = Vector2.zero;
 			return;
@@ -138,6 +140,15 @@ public class PlayerController : MonoBehaviour
 			{
 				//updates horizontal input
 				horizontalInput = Input.GetAxis("Horizontal");
+				//flips the animator gameobject depending on direction
+				if (horizontalInput < 0)
+				{
+					animator.gameObject.transform.forward = Vector3.back;
+				}
+				else
+				{
+					animator.gameObject.transform.forward = Vector3.forward;
+				}
 
 				//code for checking jump input
 				if (Input.GetButtonDown("Jump") && !isAirborne)
@@ -162,13 +173,14 @@ public class PlayerController : MonoBehaviour
 							closestToPlayer = item;
 						}
 					}
-
+					
 					horizontalInput = 0;
 					hasPressedJump = false;
 					myRigidbody2D.velocity = Vector2.zero;
 					closestToPlayer.GetComponent<Interactive>().Interact();
 				}
 
+				animator.SetFloat("speed", Mathf.Abs(horizontalInput));
 				break;
 			}
 		}
@@ -176,6 +188,8 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
+		//TODO actually fix the bug due to colliders
+		isAirborne = false;
 		if (groundDetectorTrigger.IsTriggered)
 		{
 			isAirborne = false;
