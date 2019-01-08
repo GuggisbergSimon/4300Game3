@@ -188,6 +188,8 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
+		//TODO actually fix the bug due to colliders
+		isAirborne = false;
 		if (groundDetectorTrigger.IsTriggered)
 		{
 			isAirborne = false;
