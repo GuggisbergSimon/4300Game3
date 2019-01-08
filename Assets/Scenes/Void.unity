@@ -225,6 +225,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetOption
       objectReference: {fileID: 0}
+    - target: {fileID: 1534691265043360802, guid: e851b631b8a722446942b5536bae8066,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2925183555351886507, guid: e851b631b8a722446942b5536bae8066,
         type: 3}
       propertyPath: m_havePropertiesChanged
