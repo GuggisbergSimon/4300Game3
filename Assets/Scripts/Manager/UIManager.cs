@@ -13,7 +13,20 @@ public class UIManager : MonoBehaviour
 	{
 		dialogueRunner = FindObjectOfType<DialogueRunner>();
 	}
-	
+
+	public bool isDialogueRunning()
+	{
+		if (dialogueRunner != null)
+		{
+			return dialogueRunner.isDialogueRunning;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
 	private void Awake()
 	{
 		Setup();

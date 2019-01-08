@@ -112,7 +112,7 @@
 	{
 		"title": "MSCrimeScene",
 		"tags": "",
-		"body": "Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.\n<<if $PIsInvestigating>>\nC'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.\n->*Faire demi-tour*\n->*Rechercher les environs*\n    [...]\n    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.\n    Il faut que chercher des indices ailleurs, mais où ?\n<<endif>>",
+		"body": "Il s'agit de la rive de la Moldau. Il n'y a rien de notable dans les environs.\n<<if $PIsInvestigating>>\nC'est ici que Dalibor dit s'être réveillé au lendemain de la nuit funeste du 1er mai.\n->*Faire demi-tour*\n->*Rechercher les environs*\n    Forcément, après un mois et le passage de la police il n'y a plus aucune trace.\n    Il s'agit d'un endroit assez tranquille où l'on aurait aucune peine à passer la nuit. Ou commettre un crime.\n    Il faut chercher des indices ailleurs, mais où ?\n<<endif>>",
 		"position": {
 			"x": -1664,
 			"y": -21

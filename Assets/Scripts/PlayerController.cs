@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if (GameManager.Instance.MyUiManager.DialogueRunner.isDialogueRunning == true)
+		if (GameManager.Instance.MyUiManager.isDialogueRunning() == true)
 		{
 			myRigidbody2D.velocity = Vector2.zero;
 			return;
@@ -140,7 +140,6 @@ public class PlayerController : MonoBehaviour
 			{
 				//updates horizontal input
 				horizontalInput = Input.GetAxis("Horizontal");
-				animator.SetFloat("speed", Mathf.Abs(horizontalInput));
 				//flips the animator gameobject depending on direction
 				if (horizontalInput < 0)
 				{
@@ -174,13 +173,14 @@ public class PlayerController : MonoBehaviour
 							closestToPlayer = item;
 						}
 					}
-
+					
 					horizontalInput = 0;
 					hasPressedJump = false;
 					myRigidbody2D.velocity = Vector2.zero;
 					closestToPlayer.GetComponent<Interactive>().Interact();
 				}
 
+				animator.SetFloat("speed", Mathf.Abs(horizontalInput));
 				break;
 			}
 		}
