@@ -27708,6 +27708,21 @@ PrefabInstance:
       propertyPath: startAutomatically
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8359596016566000127, guid: 96e72272d49b28d40b677be75b2abe12,
+        type: 3}
+      propertyPath: sourceText.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: cd9831f42db622b4ba24a51b931c3787, type: 3}
+    - target: {fileID: 8359596016566000127, guid: 96e72272d49b28d40b677be75b2abe12,
+        type: 3}
+      propertyPath: sourceText.Array.data[1]
+      value: 
+      objectReference: {fileID: 4900000, guid: a5d05ed53527ff740bee6172db7fe351, type: 3}
+    - target: {fileID: 8359596016566000127, guid: 96e72272d49b28d40b677be75b2abe12,
+        type: 3}
+      propertyPath: sourceText.Array.data[2]
+      value: 
+      objectReference: {fileID: 4900000, guid: 1bcf9d4c6a2540e4fa33215b5a092a84, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e72272d49b28d40b677be75b2abe12, type: 3}
 --- !u!114 &4307157965310762811 stripped
@@ -28102,16 +28117,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3633102311891073633, guid: e851b631b8a722446942b5536bae8066,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3633102311891073633, guid: e851b631b8a722446942b5536bae8066,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e851b631b8a722446942b5536bae8066, type: 3}
