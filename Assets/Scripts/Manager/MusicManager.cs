@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-	[SerializeField] private AudioClip intro;
-	[SerializeField] private AudioClip loop;
-	[SerializeField] private AudioClip outro;
+	[SerializeField] private AudioClip intro=null;
+	[SerializeField] private AudioClip loop=null;
+	[SerializeField] private AudioClip outro=null;
 	private AudioSource myAudioSourceIntro;
 	private AudioSource myAudioSourceLoop;
 	

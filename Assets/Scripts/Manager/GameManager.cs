@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	private void OnLevelFinishedLoadingScene(Scene scene, LoadSceneMode mode)
 	{
 		Setup();
+		Debug.Log("Scene Loaded");
 	}
 
 	private void Setup()
